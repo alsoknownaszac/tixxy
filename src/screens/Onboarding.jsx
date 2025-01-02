@@ -1,17 +1,17 @@
 import React, { useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
-  Button,
-  Text,
   View,
   Image,
   TouchableOpacity,
   useWindowDimensions,
   Animated,
+  FlatList,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
-import { FlatList } from "react-native";
+import FontText from "../reuseable/FontText";
+import LayoutContainer from "../Layout/LayoutContainer";
 
 const onBoardingImage = require("../../assets/images/onboarding_img.png");
 
@@ -36,12 +36,12 @@ const textData = [
 function TextList({ item }) {
   return (
     <View className="justify-end h-full relative w-screen -top-[23] px-[30] flex-1">
-      <Text className="font-bold mb-[12] text-[30px] text-center leading-[38px]">
+      <FontText className="font-bold font-satoshiBold mb-[12] text-[30px] text-center leading-[38px]">
         {item.header}
-      </Text>
-      <Text className="font-normal mb-[16] text-[16px] text-center leading-[24px]">
+      </FontText>
+      <FontText className="font-normal mb-[16] text-[16px] text-center leading-[24px]">
         {item.text}
-      </Text>
+      </FontText>
     </View>
   );
 }
@@ -74,31 +74,23 @@ export default function Onboarding({ navigation }) {
     }
   };
 
+  const propsContainer = {
+    className: "flex-1 bg-[#FCFCFC]",
+  };
+
   return (
-    <View
-      style={{
-        width,
-        flex: 1,
-        justifyContent: "flex-start",
-        // alignItems: "center",
-        paddingTop: insets.top + 20,
-        paddingBottom: insets.bottom + 20,
-        paddingLeft: insets.left + 20,
-        paddingRight: insets.right + 20,
-      }}
-      className="flex-1 bg-[#FCFCFC]"
-    >
+    <LayoutContainer {...propsContainer}>
       <TouchableOpacity
         onPress={() => navigation.navigate("SignUp")}
         className="self-end mb-[60] h-fit"
       >
-        <Text
+        <FontText
           adjustsFontSizeToFit={true}
           numberOfLines={1}
           className="font-medium text-[16px] text-[#7E62F0]"
         >
           Skip
-        </Text>
+        </FontText>
       </TouchableOpacity>
       <View className="relative w-full h-[440] overflow-hidden mb-[24] -top-[5]">
         <View className="items-center relative self-stretch">
@@ -151,12 +143,12 @@ export default function Onboarding({ navigation }) {
         // scrollTo={scrollTo}
         className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] "
       >
-        <Text className="text-white text-center text-[16px] font-bold leading-[150%]">
+        <FontText className="text-white text-center text-[16px] font-bold font-chillaxSemibold leading-[150%]">
           Get Started
-        </Text>
+        </FontText>
       </TouchableOpacity>
       <StatusBar style="auto" />
-    </View>
+    </LayoutContainer>
   );
 }
 
@@ -203,7 +195,7 @@ function Paginator({ data, scrollX }) {
               marginHorizontal: 8,
               backgroundColor,
             }}
-            key={i.toString()}
+            key={i.toString() + Math.floor()}
           />
         );
       })}

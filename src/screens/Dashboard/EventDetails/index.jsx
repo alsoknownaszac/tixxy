@@ -2,7 +2,7 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, Text, View } from "react-native";
 
-export default function Details({ navigation }) {
+export default function EventDetails({ navigation }) {
   return (
     <View className="flex-1 bg-[#FCFCFC]">
       <Button
