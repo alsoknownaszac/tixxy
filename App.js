@@ -29,6 +29,7 @@ import PersonalInfo from "./src/screens/Profile/PersonalInfo";
 import History from "./src/screens/Profile/History";
 import Settings from "./src/screens/Profile/Settings";
 import EventDetails from "./src/screens/Dashboard/EventDetails";
+import { AppProvider } from "./src/lib/appReducer";
 // import { IoAlbums } from "react-icons/io5";
 
 NativeWindStyleSheet.setOutput({
@@ -87,47 +88,49 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Onboarding"
-          screenOptions={{
-            headerShown: false,
-            headerStyle: {
-              backgroundColor: "#f4511e",
-            },
-            headerTintColor: "#fff",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
-        >
-          <Stack.Screen name="Onboarding" component={Onboarding} />
-          <Stack.Screen name="SignUp" component={Signup} />
-          <Stack.Screen name="SignIn" component={SignIn} />
-          {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
-          <Stack.Screen
-            name="Dashboard"
-            component={HomeView}
-            // options={{
-            //   // headerTitle: (props) => <LogoTitle {...props} />,
-            //   headerRight: () => (
-            //     <Button
-            //       onPress={() => alert("This is a button!")}
-            //       title="Info"
-            //       color="#fff"
-            //     />
-            //   ),
-            // }}
-          />
+    <AppProvider>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="Onboarding"
+            screenOptions={{
+              headerShown: false,
+              headerStyle: {
+                backgroundColor: "#f4511e",
+              },
+              headerTintColor: "#fff",
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          >
+            <Stack.Screen name="Onboarding" component={Onboarding} />
+            <Stack.Screen name="SignUp" component={Signup} />
+            <Stack.Screen name="SignIn" component={SignIn} />
+            {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
+            <Stack.Screen
+              name="Dashboard"
+              component={HomeView}
+              // options={{
+              //   // headerTitle: (props) => <LogoTitle {...props} />,
+              //   headerRight: () => (
+              //     <Button
+              //       onPress={() => alert("This is a button!")}
+              //       title="Info"
+              //       color="#fff"
+              //     />
+              //   ),
+              // }}
+            />
 
-          <Stack.Screen name="EventDetails" component={EventDetails} />
-          <Stack.Screen name="PersonalInfo" component={PersonalInfo} />
-          <Stack.Screen name="History" component={History} />
-          <Stack.Screen name="Settings" component={Settings} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+            <Stack.Screen name="EventDetails" component={EventDetails} />
+            <Stack.Screen name="PersonalInfo" component={PersonalInfo} />
+            <Stack.Screen name="History" component={History} />
+            <Stack.Screen name="Settings" component={Settings} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </AppProvider>
   );
 }
 
