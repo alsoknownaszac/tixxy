@@ -23,7 +23,7 @@ export default function Profile({ navigation }) {
   const { width, height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
 
-  // const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const [profileTab, setProfileTab] = useState([
     {
