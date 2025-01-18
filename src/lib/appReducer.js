@@ -4,10 +4,10 @@ export const AppContext = createContext(null);
 export const AppDispatchContext = createContext(null);
 
 export function AppProvider({ children }) {
-  const [app, dispatch] = useReducer(appReducer, initialVal);
+  const [state, dispatch] = useReducer(appReducer, initialVal);
 
   return (
-    <AppContext.Provider value={app}>
+    <AppContext.Provider value={state}>
       <AppDispatchContext.Provider value={dispatch}>
         {children}
       </AppDispatchContext.Provider>
@@ -15,11 +15,12 @@ export function AppProvider({ children }) {
   );
 }
 
-function appReducer(app, action) {
+function appReducer(state, action) {
   switch (action.type) {
-    case "switch_mode": {
+    case "switchMode": {
       return {
-        mode: action.mode,
+        ...state,
+        mode: !state.mo,
       };
     }
     default: {

@@ -3,12 +3,22 @@ import { Pressable, View, Switch } from "react-native";
 import FontText from "../../../reuseable/FontText";
 import { useNavigation } from "@react-navigation/native";
 import Entypo from "@expo/vector-icons/Entypo";
+import { useGlobalReducer, useGlobalState } from "../../../lib/appContext";
 
 export default function ProfileTabCard({ item }) {
+  const { mode } = useGlobalState();
+  const dispatch = useGlobalReducer();
+
+  console.log(mode);
+
   const navigation = useNavigation();
 
   const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  // const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const toggleSwitch = () =>
+    dispatch({
+      type: "switchMode",
+    });
 
   return (
     <Pressable onPress={() => navigation.navigate(item.naviagtionName)}>
@@ -19,13 +29,13 @@ export default function ProfileTabCard({ item }) {
             {item.title}
           </FontText>
         </View>
-        {item.naviagtionName === "PlannerMode" ? (
+        {item.naviagtionName === "Profile" ? (
           <Switch
             trackColor={{ false: "#767577", true: "#81b0ff" }}
-            thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+            thumbColor={mode ? "#f5dd4b" : "#f4f3f4"}
             ios_backgroundColor="#3e3e3e"
             onValueChange={toggleSwitch}
-            value={isEnabled}
+            value={mode}
           />
         ) : (
           <Entypo name="chevron-right" size={14} color="black" />
