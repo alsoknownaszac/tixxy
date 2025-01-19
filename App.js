@@ -21,6 +21,7 @@ import CalendarIcon from "./assets/icons/calendar_icon.svg";
 import TicketIcon from "./assets/icons/ticket_icon.svg";
 import ShopIcon from "./assets/icons/shop-add_icon.svg";
 import ProfileIcon from "./assets/icons/profile_icon.svg";
+import AddEventIcon from "./assets/icons/add_event.svg";
 import FontText from "./src/reuseable/FontText";
 import Ticket from "./src/screens/Ticket";
 import Calendar from "./src/screens/Calendar";
@@ -29,7 +30,10 @@ import PersonalInfo from "./src/screens/Profile/PersonalInfo";
 import History from "./src/screens/Profile/History";
 import Settings from "./src/screens/Profile/Settings";
 import EventDetails from "./src/screens/Dashboard/EventDetails";
+
 import { AppProvider } from "./src/lib/appReducer";
+import { useGlobalState } from "./src/lib/appContext";
+import AddEvent from "./src/screens/PlannerMode/AddEvent";
 // import { IoAlbums } from "react-icons/io5";
 
 NativeWindStyleSheet.setOutput({
@@ -90,47 +94,56 @@ export default function App() {
   return (
     <AppProvider>
       <SafeAreaProvider>
-        <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName="Onboarding"
-            screenOptions={{
-              headerShown: false,
-              headerStyle: {
-                backgroundColor: "#f4511e",
-              },
-              headerTintColor: "#fff",
-              headerTitleStyle: {
-                fontWeight: "bold",
-              },
-            }}
-          >
-            <Stack.Screen name="Onboarding" component={Onboarding} />
-            <Stack.Screen name="SignUp" component={Signup} />
-            <Stack.Screen name="SignIn" component={SignIn} />
-            {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
-            <Stack.Screen
-              name="Dashboard"
-              component={HomeView}
-              // options={{
-              //   // headerTitle: (props) => <LogoTitle {...props} />,
-              //   headerRight: () => (
-              //     <Button
-              //       onPress={() => alert("This is a button!")}
-              //       title="Info"
-              //       color="#fff"
-              //     />
-              //   ),
-              // }}
-            />
-
-            <Stack.Screen name="EventDetails" component={EventDetails} />
-            <Stack.Screen name="PersonalInfo" component={PersonalInfo} />
-            <Stack.Screen name="History" component={History} />
-            <Stack.Screen name="Settings" component={Settings} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <NavigationProvider />
       </SafeAreaProvider>
     </AppProvider>
+  );
+}
+
+function NavigationProvider() {
+  const { mode } = useGlobalState();
+
+  console.log(mode);
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Onboarding"
+        screenOptions={{
+          headerShown: false,
+          headerStyle: {
+            backgroundColor: "#f4511e",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      >
+        <Stack.Screen name="Onboarding" component={Onboarding} />
+        <Stack.Screen name="SignUp" component={Signup} />
+        <Stack.Screen name="SignIn" component={SignIn} />
+        {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
+        <Stack.Screen
+          name="Dashboard"
+          component={mode == false ? HomeView : PlannerView}
+          // options={{
+          //   // headerTitle: (props) => <LogoTitle {...props} />,
+          //   headerRight: () => (
+          //     <Button
+          //       onPress={() => alert("This is a button!")}
+          //       title="Info"
+          //       color="#fff"
+          //     />
+          //   ),
+          // }}
+        />
+
+        <Stack.Screen name="EventDetails" component={EventDetails} />
+        <Stack.Screen name="PersonalInfo" component={PersonalInfo} />
+        <Stack.Screen name="History" component={History} />
+        <Stack.Screen name="Settings" component={Settings} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -152,12 +165,14 @@ function TabsInactive(props) {
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
       <View style={{ marginBottom: 1.5 }}>{props.children}</View>
-      <FontText
-        className="font-chillaxRegular"
-        style={{ color: "#9A9898", fontSize: 13 }}
-      >
-        {props.name}
-      </FontText>
+      {props.name !== "AddEvent" && (
+        <FontText
+          className="font-chillaxRegular"
+          style={{ color: "#9A9898", fontSize: 13 }}
+        >
+          {props.name}
+        </FontText>
+      )}
     </View>
   );
 }
@@ -240,6 +255,76 @@ function HomeView() {
       <Tab.Screen name="Explore" component={Dashboard} />
       <Tab.Screen name="Ticket" component={Ticket} />
       <Tab.Screen name="Calendar" component={Calendar} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
+  );
+}
+
+function PlannerView() {
+  const insets = useSafeAreaInsets();
+  return (
+    <Tab.Navigator
+      initialRouteName="Explore"
+      detachInactiveScreens={false}
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          height: 50 + insets.bottom,
+          paddingTop: 5,
+          borderTopWidth: 0,
+        },
+        tabBarIcon: ({ icon, focused }) => {
+          if (route.name === "Explore") {
+            icon = focused ? (
+              <TabsFocused name={route.name} />
+            ) : (
+              <TabsInactive name={route.name}>
+                <ExploreIcon
+                  width={22}
+                  height={22}
+                  strokeWidth={0.3}
+                  fill="none"
+                />
+              </TabsInactive>
+            );
+          } else if (route.name === "AddEvent") {
+            icon = focused ? (
+              <TabsFocused name={route.name} />
+            ) : (
+              <TabsInactive name={route.name}>
+                <AddEventIcon
+                  width={95}
+                  height={95}
+                  strokeWidth={0.3}
+                  fill="none"
+                />
+              </TabsInactive>
+            );
+          } else if (route.name === "Profile") {
+            icon = focused ? (
+              <TabsFocused name={route.name} />
+            ) : (
+              <TabsInactive name={route.name}>
+                <ProfileIcon
+                  width={22}
+                  height={22}
+                  strokeWidth={0.3}
+                  fill="none"
+                />
+              </TabsInactive>
+            );
+          }
+
+          // You can return any component that you like here!
+          return icon;
+        },
+        tabBarButton: (props) => <TouchableOpacity {...props} />,
+      })}
+    >
+      <Tab.Screen name="Explore" component={Dashboard} />
+
+      <Tab.Screen name="AddEvent" component={AddEvent} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );

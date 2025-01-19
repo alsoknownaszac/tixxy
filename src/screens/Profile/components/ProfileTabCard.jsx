@@ -9,11 +9,9 @@ export default function ProfileTabCard({ item }) {
   const { mode } = useGlobalState();
   const dispatch = useGlobalReducer();
 
-  console.log(mode);
-
   const navigation = useNavigation();
 
-  const [isEnabled, setIsEnabled] = useState(false);
+  // const [isEnabled, setIsEnabled] = useState(false);
   // const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   const toggleSwitch = () =>
     dispatch({
@@ -29,7 +27,7 @@ export default function ProfileTabCard({ item }) {
             {item.title}
           </FontText>
         </View>
-        {item.naviagtionName === "Profile" ? (
+        {item.title === "Planner Mode" ? (
           <Switch
             trackColor={{ false: "#767577", true: "#81b0ff" }}
             thumbColor={mode ? "#f5dd4b" : "#f4f3f4"}

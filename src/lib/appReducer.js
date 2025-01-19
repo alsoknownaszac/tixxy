@@ -20,7 +20,7 @@ function appReducer(state, action) {
     case "switchMode": {
       return {
         ...state,
-        mode: !state.mo,
+        mode: !state.mode,
       };
     }
     default: {
