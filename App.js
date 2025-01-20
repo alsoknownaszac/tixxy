@@ -13,7 +13,16 @@ import * as SplashScreen from "expo-splash-screen";
 import Signup from "./src/screens/Signup";
 import SignIn from "./src/screens/SignIn";
 import Dashboard from "./src/screens/Dashboard";
-import { Image, Text, View, Button, TouchableOpacity } from "react-native";
+import {
+  Image,
+  Text,
+  View,
+  Button,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+  TouchableHighlight,
+} from "react-native";
 import { Octicons } from "@expo/vector-icons";
 
 import ExploreIcon from "./assets/icons/explore_icon.svg";
@@ -35,6 +44,7 @@ import { AppProvider } from "./src/lib/appReducer";
 import { useGlobalState } from "./src/lib/appContext";
 import AddEvent from "./src/screens/PlannerMode/AddEvent";
 // import { IoAlbums } from "react-icons/io5";
+import Svg, { Circle, Path } from "react-native-svg";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -149,7 +159,12 @@ function NavigationProvider() {
 
 function TabsFocused(props) {
   return (
-    <View style={{ justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <FontText
         className="font-chillaxMedium"
         style={{ color: "#7E62F0", fontSize: 13 }}
@@ -173,6 +188,52 @@ function TabsInactive(props) {
           {props.name}
         </FontText>
       )}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    position: "relative",
+    alignItems: "center",
+  },
+  background: {
+    position: "absolute",
+    top: -200,
+  },
+  button: {
+    top: -22.5,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 50,
+    height: 50,
+    borderRadius: 27,
+    backgroundColor: "#E94F37",
+  },
+  buttonIcon: {
+    fontSize: 16,
+    color: "#F6F7EB",
+  },
+});
+
+function AddEventTabsInactive(props) {
+  const color = "red";
+
+  return (
+    <View style={styles.container} pointerEvents="box-none">
+      <View style={{ marginBottom: 1.5 }}>{props.children}</View>
+      <Svg
+        width={75}
+        height={61}
+        viewBox="0 0 75 61"
+        background={styles.background}
+        {...props}
+      >
+        <Path
+          d="M75.2 0v61H0V0c4.1 0 7.4 3.1 7.9 7.1C10 21.7 22.5 33 37.7 33c15.2 0 27.7-11.3 29.7-25.9.5-4 3.9-7.1 7.9-7.1h-.1z"
+          fill={color}
+        />
+      </Svg>
     </View>
   );
 }
@@ -273,6 +334,7 @@ function PlannerView() {
           height: 50 + insets.bottom,
           paddingTop: 5,
           borderTopWidth: 0,
+          // backgroundColor: "blue",
         },
         tabBarIcon: ({ icon, focused }) => {
           if (route.name === "Explore") {
@@ -292,14 +354,15 @@ function PlannerView() {
             icon = focused ? (
               <TabsFocused name={route.name} />
             ) : (
-              <TabsInactive name={route.name}>
+              <AddEventTabsInactive key={route.name} {...route}>
                 <AddEventIcon
+                  style={{ top: 50 }}
                   width={95}
                   height={95}
                   strokeWidth={0.3}
                   fill="none"
                 />
-              </TabsInactive>
+              </AddEventTabsInactive>
             );
           } else if (route.name === "Profile") {
             icon = focused ? (
@@ -324,7 +387,15 @@ function PlannerView() {
     >
       <Tab.Screen name="Explore" component={Dashboard} />
 
-      <Tab.Screen name="AddEvent" component={AddEvent} />
+      <Tab.Screen
+        navigationOptions={() => {
+          return {
+            tabBarVisible: false,
+          };
+        }}
+        name="AddEvent"
+        component={AddEvent}
+      />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
