@@ -354,7 +354,7 @@ function PlannerView() {
             icon = focused ? (
               <TabsFocused name={route.name} />
             ) : (
-              <AddEventTabsInactive key={route.name} {...route}>
+              <AddEventTabsInactive {...route}>
                 <AddEventIcon
                   style={{ top: 50 }}
                   width={95}
@@ -388,11 +388,7 @@ function PlannerView() {
       <Tab.Screen name="Explore" component={Dashboard} />
 
       <Tab.Screen
-        navigationOptions={() => {
-          return {
-            tabBarVisible: false,
-          };
-        }}
+        options={{ tabBarStyle: { display: "none" } }}
         name="AddEvent"
         component={AddEvent}
       />
