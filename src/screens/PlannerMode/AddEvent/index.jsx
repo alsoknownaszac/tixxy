@@ -3,6 +3,7 @@ import {
   Animated,
   Pressable,
   StyleSheet,
+  TouchableOpacity,
   useWindowDimensions,
   View,
 } from "react-native";
@@ -10,10 +11,27 @@ import FontText from "../../../reuseable/FontText";
 import LayoutContainer from "../../../Layout/LayoutContainer";
 import BackArrow from "../../../../assets/icons/back_arrow.svg";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import * as ImagePicker from "expo-image-picker";
 
 export default function AddEvent({ navigation }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
+
+  const [selectedImage, setSelectedImage] = useState(undefined);
+
+  const pickImageAsync = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ["images"],
+      allowsEditing: true,
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+    } else {
+      alert("You did not select any image.");
+    }
+  };
 
   return (
     <LayoutContainer noSafeAreaProfile>
@@ -53,7 +71,27 @@ export default function AddEvent({ navigation }) {
           paddingRight: insets.right + 20,
         }}
         className="flex-1 mt-[22]"
-      ></View>
+      >
+        <View className="border border-[#DAD8D8] rounded-[20px] h-[128px] flex">
+          <View className="m-auto">
+            <FontText className="font-chillaxRegular text-center text-[14px] leading-[20px] text-[#595959]">
+              PNG, JPG, WEBP Max 10mb.
+            </FontText>
+            <TouchableOpacity
+              onPress={pickImageAsync}
+              className="py-[12] bg-[#EBEBEB] w-[123px] rounded-[100px] mt-[12] mx-auto"
+            >
+              <FontText className="text-[#2A2B2A] text-center text-[12px] font-chillaxMedium leading-[130%0]">
+                Choose File
+              </FontText>
+            </TouchableOpacity>
+          </View>
+        </View>
+        {/* <ImageViewer
+          imgSource={PlaceholderImage}
+          selectedImage={selectedImage}
+        /> */}
+      </View>
     </LayoutContainer>
   );
 }
@@ -93,3 +131,17 @@ const ProgressBar = ({ progressFrom, progressTo }) => {
 //   inputRange: [0, 100],
 //   outputRange: ['0%', '100%'],
 // });
+
+function ImageViewer({ imgSource, selectedImage }) {
+  const imageSource = selectedImage ? { uri: selectedImage } : imgSource;
+
+  return <Image source={imageSource} style={stylesImageViewer.image} />;
+}
+
+const stylesImageViewer = StyleSheet.create({
+  image: {
+    width: 320,
+    height: 440,
+    borderRadius: 18,
+  },
+});
