@@ -20,14 +20,25 @@ export default function AddEvent({ navigation }) {
   const [selectedImage, setSelectedImage] = useState(undefined);
 
   const [eventRadioSelected] = useState([
-    { selected: 0, label: "none" },
     { selected: 1, label: "in person" },
     { selected: 2, label: "online" },
   ]);
 
-  const [eventTypeRadio, setEventTypeRadio] = useState([
-    { selected: 0, label: "none" },
-  ]);
+  const [eventTypeRadio, setEventTypeRadio] = useState({
+    selected: 0,
+    label: "",
+  });
+
+  const handleRadioSelect = (radio) => {
+    radio.selected == 1
+      ? setEventTypeRadio({ selected: 1, label: "in person" })
+      : radio.selected == 2
+      ? setEventTypeRadio({ selected: 2, label: "online" })
+      : {
+          selected: 0,
+          label: "",
+        };
+  };
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -42,6 +53,8 @@ export default function AddEvent({ navigation }) {
       alert("You did not select any image.");
     }
   };
+
+  console.log(eventTypeRadio);
 
   return (
     <LayoutContainer noSafeAreaProfile>
@@ -102,12 +115,19 @@ export default function AddEvent({ navigation }) {
             Event Type
           </FontText>
           <View className="flex flex-col">
-            <TouchableOpacity onPress={pickImageAsync}>
-              <RadioButton selected />
-              <FontText className="font-chillaxSemibold text-[14px] leading-[20px] text-[#595959]">
-                Event Type
-              </FontText>
-            </TouchableOpacity>
+            {eventRadioSelected.map((radio) => (
+              <TouchableOpacity
+                key={radio.selected}
+                onPress={() => handleRadioSelect(radio)}
+              >
+                <RadioButton
+                  selected={radio.selected == eventTypeRadio.selected}
+                />
+                <FontText className="font-chillaxSemibold text-[14px] leading-[20px] text-[#595959]">
+                  {radio.label}
+                </FontText>
+              </TouchableOpacity>
+            ))}
           </View>
         </View>
 
