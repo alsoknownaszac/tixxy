@@ -19,6 +19,16 @@ export default function AddEvent({ navigation }) {
 
   const [selectedImage, setSelectedImage] = useState(undefined);
 
+  const [eventRadioSelected] = useState([
+    { selected: 0, label: "none" },
+    { selected: 1, label: "in person" },
+    { selected: 2, label: "online" },
+  ]);
+
+  const [eventTypeRadio, setEventTypeRadio] = useState([
+    { selected: 0, label: "none" },
+  ]);
+
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
@@ -72,7 +82,7 @@ export default function AddEvent({ navigation }) {
         }}
         className="flex-1 mt-[22]"
       >
-        <View className="border border-[#DAD8D8] rounded-[20px] h-[128px] flex">
+        <View className="border border-[#DAD8D8] rounded-[20px] h-[128px]">
           <View className="m-auto">
             <FontText className="font-chillaxRegular text-center text-[14px] leading-[20px] text-[#595959]">
               PNG, JPG, WEBP Max 10mb.
@@ -87,6 +97,20 @@ export default function AddEvent({ navigation }) {
             </TouchableOpacity>
           </View>
         </View>
+        <View className="mt-[30]">
+          <FontText className="font-chillaxSemibold text-[14px] leading-[20px] text-[#595959]">
+            Event Type
+          </FontText>
+          <View className="flex flex-col">
+            <TouchableOpacity onPress={pickImageAsync}>
+              <RadioButton selected />
+              <FontText className="font-chillaxSemibold text-[14px] leading-[20px] text-[#595959]">
+                Event Type
+              </FontText>
+            </TouchableOpacity>
+          </View>
+        </View>
+
         {/* <ImageViewer
           imgSource={PlaceholderImage}
           selectedImage={selectedImage}
@@ -145,3 +169,33 @@ const stylesImageViewer = StyleSheet.create({
     borderRadius: 18,
   },
 });
+
+function RadioButton(props) {
+  return (
+    <View
+      style={[
+        {
+          height: 19,
+          width: 19,
+          borderRadius: 100,
+          borderWidth: 2,
+          borderColor: "#9A9898",
+          alignItems: "center",
+          justifyContent: "center",
+        },
+        props.style,
+      ]}
+    >
+      {props.selected ? (
+        <View
+          style={{
+            height: "70%",
+            width: "70%",
+            borderRadius: 100,
+            backgroundColor: "#7E62F0",
+          }}
+        />
+      ) : null}
+    </View>
+  );
+}
