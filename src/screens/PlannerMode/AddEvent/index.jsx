@@ -174,6 +174,7 @@ const ProgressBar = ({ progressFrom, progressTo }) => {
 // const animatedWidth = animatedValue.interpolate({
 //   inputRange: [0, 100],
 //   outputRange: ['0%', '100%'],
+////////
 // });
 
 function ImageViewer({ imgSource, selectedImage }) {
