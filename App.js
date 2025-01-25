@@ -386,7 +386,6 @@ function PlannerView() {
       })}
     >
       <Tab.Screen name="Explore" component={Dashboard} />
-
       <Tab.Screen
         options={{ tabBarStyle: { display: "none" } }}
         name="AddEvent"

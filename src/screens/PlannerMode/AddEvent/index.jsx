@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import {
   Animated,
   Pressable,
+  ScrollView,
   StyleSheet,
+  TextInput,
   TouchableOpacity,
   useWindowDimensions,
   View,
@@ -12,11 +14,14 @@ import LayoutContainer from "../../../Layout/LayoutContainer";
 import BackArrow from "../../../../assets/icons/back_arrow.svg";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
+import { DropdownMenu, MenuOption } from "../../../reuseable/DropDown";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 export default function AddEvent({ navigation }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
 
+  const [sectionPage, setSectionPage] = useState(0);
   const [selectedImage, setSelectedImage] = useState(undefined);
 
   const [eventRadioSelected] = useState([
@@ -54,13 +59,25 @@ export default function AddEvent({ navigation }) {
     }
   };
 
-  console.log(eventTypeRadio);
+  const [visible, setVisible] = useState(false);
+
+  const [eventDropdownSelected] = useState([
+    { selected: 1, label: "private" },
+    { selected: 2, label: "public" },
+  ]);
+
+  const [eventTypeDropdown, setEventTypeDropdown] = useState({
+    selected: 0,
+    label: "",
+  });
+
+  console.log(sectionPage);
 
   return (
     <LayoutContainer noSafeAreaProfile>
       <View
         style={{
-          paddingTop: insets.top + 20,
+          paddingTop: insets.top,
           paddingLeft: insets.left + 20,
           paddingRight: insets.right + 20,
         }}
@@ -68,7 +85,13 @@ export default function AddEvent({ navigation }) {
         <View className="flex-initial rounded-b-[20px]">
           <View className="py-[20px] flex flex-row justify-between items-center ">
             <View className="w-1/6">
-              <Pressable onPress={() => navigation.goBack()}>
+              <Pressable
+                onPress={() =>
+                  sectionPage != 0
+                    ? setSectionPage(sectionPage - 1)
+                    : navigation.goBack()
+                }
+              >
                 <BackArrow
                   width={26}
                   height={26}
@@ -78,7 +101,7 @@ export default function AddEvent({ navigation }) {
               </Pressable>
             </View>
             <View className="w-2/6">
-              <FontText className="font-chillaxSemibold text-center text-[18px] leading-[24px] text-[#2A2B2A]">
+              <FontText className="font-chillaxSemibold text-center text-[17px] leading-[24px] text-[#2A2B2A]">
                 Create Event
               </FontText>
             </View>
@@ -86,55 +109,167 @@ export default function AddEvent({ navigation }) {
           </View>
         </View>
       </View>
-      <ProgressBar progressFrom={0} progressTo={50} />
-      <View
-        style={{
-          paddingTop: 35,
-          paddingLeft: insets.left + 20,
-          paddingRight: insets.right + 20,
-        }}
-        className="flex-1 mt-[22]"
-      >
-        <View className="border border-[#DAD8D8] rounded-[20px] h-[128px]">
-          <View className="m-auto">
-            <FontText className="font-chillaxRegular text-center text-[14px] leading-[20px] text-[#595959]">
-              PNG, JPG, WEBP Max 10mb.
-            </FontText>
-            <TouchableOpacity
-              onPress={pickImageAsync}
-              className="py-[12] bg-[#EBEBEB] w-[123px] rounded-[100px] mt-[12] mx-auto"
-            >
-              <FontText className="text-[#2A2B2A] text-center text-[12px] font-chillaxMedium leading-[130%0]">
-                Choose File
+      <ProgressBar
+        progressFrom={sectionPage == 0 ? 0 : sectionPage == 1 ? 33.33 : 66.66}
+        progressTo={sectionPage == 0 ? 33.33 : sectionPage == 1 ? 66.66 : 100}
+      />
+      {sectionPage == 0 ? (
+        <ScrollView
+          style={{
+            paddingTop: 35,
+            paddingLeft: insets.left + 20,
+            paddingRight: insets.right + 20,
+          }}
+          className="flex-1"
+        >
+          <View className="border border-[#DAD8D8] rounded-[20px] h-[128px]">
+            <View className="m-auto">
+              <FontText className="font-chillaxRegular text-center text-[14px] leading-[20px] text-[#595959]">
+                PNG, JPG, WEBP Max 10mb.
               </FontText>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View className="mt-[30]">
-          <FontText className="font-chillaxSemibold text-[14px] leading-[20px] text-[#595959]">
-            Event Type
-          </FontText>
-          <View className="flex flex-col">
-            {eventRadioSelected.map((radio) => (
               <TouchableOpacity
-                key={radio.selected}
-                onPress={() => handleRadioSelect(radio)}
+                onPress={pickImageAsync}
+                className="py-[12] bg-[#EBEBEB] w-[123px] rounded-[100px] mt-[12] mx-auto"
               >
-                <RadioButton
-                  selected={radio.selected == eventTypeRadio.selected}
-                />
-                <FontText className="font-chillaxSemibold text-[14px] leading-[20px] text-[#595959]">
-                  {radio.label}
+                <FontText className="text-[#2A2B2A] text-center text-[14px] font-chillaxMedium leading-[130%0]">
+                  Choose File
                 </FontText>
               </TouchableOpacity>
-            ))}
+            </View>
           </View>
-        </View>
-
-        {/* <ImageViewer
+          <View className="mt-[30]">
+            <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
+              Event Type
+            </FontText>
+            <View className="flex flex-row gap-[24px] items-center">
+              {eventRadioSelected.map((radio) => (
+                <TouchableOpacity
+                  key={radio.selected}
+                  onPress={() => handleRadioSelect(radio)}
+                  className="flex flex-row gap-[6.5px]"
+                >
+                  <RadioButton
+                    selected={radio.selected == eventTypeRadio.selected}
+                  />
+                  <FontText className="font-trapRegular capitalize text-[17px] leading-[24px] text-[#595959]">
+                    {radio.label}
+                  </FontText>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+          <View className="mt-[30]">
+            <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
+              Event Name
+            </FontText>
+            <View className="rounded-[10px] py-[14] px-[14] bg-[#DAD8D8]/20 border border-[#DAD8D8]">
+              <TextInput
+                className="text-[17px]"
+                editable
+                numberOfLines={4}
+                maxLength={40}
+                onChangeText={(text) => onChangeText(text)}
+                placeholder="Enter Event Name"
+                // value={value}
+              />
+            </View>
+          </View>
+          <View className="mt-[30]">
+            <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
+              Description
+            </FontText>
+            <View className="rounded-[10px] py-[14] px-[14] bg-[#DAD8D8]/20 border border-[#DAD8D8]">
+              <TextInput
+                className="text-[17px]"
+                editable
+                multiline={true}
+                numberOfLines={10}
+                maxLength={200}
+                onChangeText={(text) => onChangeText(text)}
+                placeholder="Give a brief description of the event"
+                style={{
+                  height: 80,
+                  textAlignVertical: "top",
+                }}
+                // value={value}
+              />
+            </View>
+          </View>
+          <View className="mt-[30]">
+            <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
+              Privacy
+            </FontText>
+            <DropdownMenu
+              visible={visible}
+              handleOpen={() => setVisible(true)}
+              handleClose={() => setVisible(false)}
+              trigger={
+                <View className="flex flex-row justify-between items-center rounded-[10px] w-[180] py-[14] px-[14] bg-[#DAD8D8]/10 border border-[#DAD8D8]">
+                  <FontText className="font-trapRegular capitalize text-[17px] leading-[20px] text-[#595959]">
+                    {eventTypeDropdown.selected != 0
+                      ? eventTypeDropdown.label
+                      : "please select"}
+                  </FontText>
+                  {visible === false ? (
+                    <AntDesign name="caretdown" size={11} color="black" />
+                  ) : (
+                    <AntDesign name="caretup" size={11} color="black" />
+                  )}
+                </View>
+              }
+            >
+              {eventDropdownSelected.map((menuOption) => (
+                <MenuOption
+                  key={menuOption.selected}
+                  onSelect={() => {
+                    setEventTypeDropdown(menuOption);
+                    setVisible(false);
+                  }}
+                >
+                  <FontText className="font-trapRegular capitalize text-center text-[14px] leading-[20px] text-[#595959]">
+                    {menuOption.label}
+                  </FontText>
+                </MenuOption>
+              ))}
+            </DropdownMenu>
+          </View>
+          {/* <ImageViewer
           imgSource={PlaceholderImage}
           selectedImage={selectedImage}
         /> */}
+        </ScrollView>
+      ) : sectionPage == 1 ? (
+        <ScrollView
+          style={{
+            paddingTop: 35,
+            paddingLeft: insets.left + 20,
+            paddingRight: insets.right + 20,
+          }}
+          className="flex-1"
+        ></ScrollView>
+      ) : (
+        <ScrollView
+          style={{
+            paddingTop: 35,
+            paddingLeft: insets.left + 20,
+            paddingRight: insets.right + 20,
+          }}
+          className="flex-1"
+        ></ScrollView>
+      )}
+      <View className="p-[16]">
+        <TouchableOpacity
+          onPress={() =>
+            sectionPage != 2
+              ? setSectionPage(sectionPage + 1)
+              : console.log("finished")
+          }
+          className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
+        >
+          <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
+            {sectionPage != 2 ? "Proceed" : "Finish"}
+          </FontText>
+        </TouchableOpacity>
       </View>
     </LayoutContainer>
   );
@@ -174,7 +309,6 @@ const ProgressBar = ({ progressFrom, progressTo }) => {
 // const animatedWidth = animatedValue.interpolate({
 //   inputRange: [0, 100],
 //   outputRange: ['0%', '100%'],
-////////
 // });
 
 function ImageViewer({ imgSource, selectedImage }) {
