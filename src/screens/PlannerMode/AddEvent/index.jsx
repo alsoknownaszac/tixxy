@@ -4,6 +4,7 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
+  Switch,
   TextInput,
   TouchableOpacity,
   useWindowDimensions,
@@ -72,6 +73,9 @@ export default function AddEvent({ navigation }) {
   });
 
   console.log(sectionPage);
+
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   return (
     <LayoutContainer noSafeAreaProfile>
@@ -246,7 +250,25 @@ export default function AddEvent({ navigation }) {
             paddingRight: insets.right + 20,
           }}
           className="flex-1"
-        ></ScrollView>
+        >
+          <View className="flex flex-row items-center justify-between">
+            <View>
+              <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[3] text-[#595959]">
+                Multi Day Event
+              </FontText>
+              <FontText className="font-chillaxNormal text-[17px] leading-[24px] text-[#595959]">
+                The events lasts longer than a day
+              </FontText>
+            </View>
+            <Switch
+              trackColor={{ false: "#F7F7F7", true: "#E4E0F5" }}
+              thumbColor={isEnabled ? "#7E62F0" : "#9A9898"}
+              ios_backgroundColor="##F7F7F7"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+            />
+          </View>
+        </ScrollView>
       ) : (
         <ScrollView
           style={{
