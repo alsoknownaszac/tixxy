@@ -263,7 +263,11 @@ export default function AddEvent({ navigation }) {
             <Switch
               trackColor={{ false: "#F7F7F7", true: "#E4E0F5" }}
               thumbColor={isEnabled ? "#7E62F0" : "#9A9898"}
-              ios_backgroundColor="##F7F7F7"
+              style={{
+                transform: [{ scaleX: 0.85 }, { scaleY: 0.8 }],
+                marginVertical: -8,
+              }}
+              ios_backgroundColor="#F7F7F7"
               onValueChange={toggleSwitch}
               value={isEnabled}
             />
@@ -317,7 +321,7 @@ const ProgressBar = ({ progressFrom, progressTo }) => {
   useEffect(() => {
     Animated.timing(progress, {
       toValue: progressTo * progressWidth,
-      duration: 2000,
+      duration: 800,
     }).start();
   }, [progressTo, progress]);
 
