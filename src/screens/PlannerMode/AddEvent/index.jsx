@@ -272,6 +272,24 @@ export default function AddEvent({ navigation }) {
               value={isEnabled}
             />
           </View>
+          <View className="flex flex-row items-center justify-between mt-[30]">
+            <View>
+              <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[3] text-[#595959]">
+                Date
+              </FontText>
+              <FontText className="font-chillaxNormal text-[17px] leading-[24px] text-[#595959]">
+                The events lasts longer than a day
+              </FontText>
+            </View>
+            <View>
+              <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[3] text-[#595959]">
+                Start Time
+              </FontText>
+              <FontText className="font-chillaxNormal text-[17px] leading-[24px] text-[#595959]">
+                The events lasts longer than a day
+              </FontText>
+            </View>
+          </View>
         </ScrollView>
       ) : (
         <ScrollView
