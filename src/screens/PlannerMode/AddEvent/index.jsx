@@ -277,17 +277,17 @@ export default function AddEvent({ navigation }) {
               <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[3] text-[#595959]">
                 Date
               </FontText>
-              <FontText className="font-chillaxNormal text-[17px] leading-[24px] text-[#595959]">
+              {/* <FontText className="font-chillaxNormal text-[17px] leading-[24px] text-[#595959]">
                 The events lasts longer than a day
-              </FontText>
+              </FontText> */}
             </View>
             <View>
               <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[3] text-[#595959]">
                 Start Time
               </FontText>
-              <FontText className="font-chillaxNormal text-[17px] leading-[24px] text-[#595959]">
+              {/* <FontText className="font-chillaxNormal text-[17px] leading-[24px] text-[#595959]">
                 The events lasts longer than a day
-              </FontText>
+              </FontText> */}
             </View>
           </View>
         </ScrollView>
