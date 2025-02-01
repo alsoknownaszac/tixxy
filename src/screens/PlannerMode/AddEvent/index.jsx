@@ -26,24 +26,25 @@ export default function AddEvent({ navigation }) {
   const [selectedImage, setSelectedImage] = useState(undefined);
 
   const [eventRadioSelected] = useState([
+    { selected: 0, label: "" },
     { selected: 1, label: "in person" },
     { selected: 2, label: "online" },
   ]);
 
-  const [eventTypeRadio, setEventTypeRadio] = useState({
-    selected: 0,
-    label: "",
-  });
+  const [eventTypeRadio, setEventTypeRadio] = useState(eventRadioSelected[0]);
 
   const handleRadioSelect = (radio) => {
-    radio.selected == 1
-      ? setEventTypeRadio({ selected: 1, label: "in person" })
-      : radio.selected == 2
-      ? setEventTypeRadio({ selected: 2, label: "online" })
-      : {
-          selected: 0,
-          label: "",
-        };
+    switch (radio.selected) {
+      case 1:
+        setEventTypeRadio(eventRadioSelected[1]);
+        break;
+      case 2:
+        setEventTypeRadio(eventRadioSelected[2]);
+        break;
+      default:
+        eventRadioSelected[0];
+        break;
+    }
   };
 
   const pickImageAsync = async () => {
@@ -146,20 +147,23 @@ export default function AddEvent({ navigation }) {
               Event Type
             </FontText>
             <View className="flex flex-row gap-[24px] items-center">
-              {eventRadioSelected.map((radio) => (
-                <TouchableOpacity
-                  key={radio.selected}
-                  onPress={() => handleRadioSelect(radio)}
-                  className="flex flex-row gap-[6.5px]"
-                >
-                  <RadioButton
-                    selected={radio.selected == eventTypeRadio.selected}
-                  />
-                  <FontText className="font-trapRegular capitalize text-[17px] leading-[24px] text-[#595959]">
-                    {radio.label}
-                  </FontText>
-                </TouchableOpacity>
-              ))}
+              {eventRadioSelected.map(
+                (radio, indx) =>
+                  indx > 0 && (
+                    <TouchableOpacity
+                      key={radio.selected}
+                      onPress={() => handleRadioSelect(radio)}
+                      className="flex flex-row gap-[6.5px]"
+                    >
+                      <RadioButton
+                        selected={radio.selected == eventTypeRadio.selected}
+                      />
+                      <FontText className="font-trapRegular capitalize text-[17px] leading-[24px] text-[#595959]">
+                        {radio.label}
+                      </FontText>
+                    </TouchableOpacity>
+                  )
+              )}
             </View>
           </View>
           <View className="mt-[30]">
@@ -395,6 +399,64 @@ function RadioButton(props) {
           }}
         />
       ) : null}
+    </View>
+  );
+}
+
+function CustomDropdown({ selected, label }) {
+  const [visible, setVisible] = useState(false);
+
+  const [eventDropdownSelected] = useState([
+    { selected: 1, label: "private" },
+    { selected: 2, label: "public" },
+  ]);
+
+  const [eventTypeDropdown, setEventTypeDropdown] = useState({
+    selected: 0,
+    label: "",
+  });
+
+  return (
+    <View className="mt-[30]">
+      <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
+        Privacy
+      </FontText>
+      <DropdownMenu
+        visible={visible}
+        handleOpen={() => setVisible(true)}
+        handleClose={() => setVisible(false)}
+        trigger={
+          <View className="flex flex-row justify-between items-center rounded-[10px] w-[180] py-[14] px-[14] bg-[#DAD8D8]/10 border border-[#DAD8D8]">
+            <FontText className="font-trapRegular capitalize text-[17px] leading-[20px] text-[#595959]">
+              {eventTypeDropdown.selected != 0
+                ? eventTypeDropdown.label
+                : "please select"}
+            </FontText>
+            {visible === false ? (
+              <AntDesign name="caretdown" size={11} color="black" />
+            ) : (
+              <AntDesign name="caretup" size={11} color="black" />
+            )}
+          </View>
+        }
+      >
+        {eventDropdownSelected.map(
+          (menuOption, indx) =>
+            indx > 0 && (
+              <MenuOption
+                key={menuOption.selected}
+                onSelect={() => {
+                  setEventTypeDropdown(menuOption);
+                  setVisible(false);
+                }}
+              >
+                <FontText className="font-trapRegular capitalize text-center text-[14px] leading-[20px] text-[#595959]">
+                  {menuOption.label}
+                </FontText>
+              </MenuOption>
+            )
+        )}
+      </DropdownMenu>
     </View>
   );
 }
