@@ -68,6 +68,10 @@ export default function AddEvent({ navigation }) {
     { selected: 2, label: "public" },
   ]);
 
+  const [utcDropdown] = useState([
+    { selected: 1, label: "(UTC + 01:00) West Central Africa" },
+  ]);
+
   const [eventTypeDropdown, setEventTypeDropdown] = useState({
     selected: 0,
     label: "",
@@ -203,7 +207,7 @@ export default function AddEvent({ navigation }) {
               />
             </View>
           </View>
-          <View className="mt-[30]">
+          {/* <View className="mt-[30]">
             <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
               Privacy
             </FontText>
@@ -240,8 +244,13 @@ export default function AddEvent({ navigation }) {
                 </MenuOption>
               ))}
             </DropdownMenu>
-          </View>
+          </View> */}
           <CustomDropdown dropdownList={eventDropdownSelected} name="Privacy" />
+          <CustomDropdown
+            dropdownList={utcDropdown}
+            name="Timezone"
+            dropdownWidth={width}
+          />
 
           {/* <ImageViewer
           imgSource={PlaceholderImage}
@@ -405,7 +414,7 @@ function RadioButton(props) {
   );
 }
 
-function CustomDropdown({ dropdownList, name }) {
+function CustomDropdown({ dropdownList, name, dropdownWidth }) {
   const [visible, setVisible] = useState(false);
 
   const [eventDropdownSelected] = useState([
@@ -423,6 +432,7 @@ function CustomDropdown({ dropdownList, name }) {
         {name}
       </FontText>
       <DropdownMenu
+        dropdownWidth={dropdownWidth}
         visible={visible}
         handleOpen={() => setVisible(true)}
         handleClose={() => setVisible(false)}
