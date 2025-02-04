@@ -245,12 +245,6 @@ export default function AddEvent({ navigation }) {
               ))}
             </DropdownMenu>
           </View> */}
-          <CustomDropdown dropdownList={eventDropdownSelected} name="Privacy" />
-          <CustomDropdown
-            dropdownList={utcDropdown}
-            name="Timezone"
-            dropdownWidth={width}
-          />
 
           {/* <ImageViewer
           imgSource={PlaceholderImage}
@@ -305,6 +299,12 @@ export default function AddEvent({ navigation }) {
               </FontText> */}
             </View>
           </View>
+          <CustomDropdown dropdownList={eventDropdownSelected} name="Privacy" />
+          <CustomDropdown
+            dropdownList={utcDropdown}
+            name="Timezone"
+            dropdownWidth={width}
+          />
         </ScrollView>
       ) : (
         <ScrollView

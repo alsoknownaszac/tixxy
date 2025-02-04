@@ -14,7 +14,7 @@ export const DropdownMenu = ({
   handleClose,
   trigger,
   children,
-  dropdownWidth = 200,
+  // dropdownWidth = 200,
 }) => {
   const triggerRef = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0, width: 0 });
@@ -52,12 +52,13 @@ export const DropdownMenu = ({
           >
             <View style={styles.modalOverlay}>
               <View
+                className="200"
                 style={[
                   styles.menu,
                   {
                     top: position.y - 80,
                     left: position.x + 30,
-                    width: dropdownWidth,
+                    // width: dropdownWidth,
                     gap: 8,
                   },
                 ]}
@@ -78,7 +79,7 @@ DropdownMenu.propTypes = {
   handleClose: PropTypes.func.isRequired,
   trigger: PropTypes.node.isRequired,
   children: PropTypes.node.isRequired,
-  dropdownWidth: PropTypes.number,
+  // dropdownWidth: PropTypes.number,
 };
 
 export const MenuOption = ({ onSelect, children }) => {
@@ -105,7 +106,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     backgroundColor: "transparent",
-    width: 420,
   },
   menu: {
     position: "absolute",
