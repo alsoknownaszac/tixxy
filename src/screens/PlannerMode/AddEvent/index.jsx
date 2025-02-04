@@ -207,44 +207,6 @@ export default function AddEvent({ navigation }) {
               />
             </View>
           </View>
-          {/* <View className="mt-[30]">
-            <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
-              Privacy
-            </FontText>
-            <DropdownMenu
-              visible={visible}
-              handleOpen={() => setVisible(true)}
-              handleClose={() => setVisible(false)}
-              trigger={
-                <View className="flex flex-row justify-between items-center rounded-[10px] w-[180] py-[14] px-[14] bg-[#DAD8D8]/10 border border-[#DAD8D8]">
-                  <FontText className="font-trapRegular capitalize text-[17px] leading-[20px] text-[#595959]">
-                    {eventTypeDropdown.selected != 0
-                      ? eventTypeDropdown.label
-                      : "please select"}
-                  </FontText>
-                  {visible === false ? (
-                    <AntDesign name="caretdown" size={11} color="black" />
-                  ) : (
-                    <AntDesign name="caretup" size={11} color="black" />
-                  )}
-                </View>
-              }
-            >
-              {eventDropdownSelected.map((menuOption) => (
-                <MenuOption
-                  key={menuOption.selected}
-                  onSelect={() => {
-                    setEventTypeDropdown(menuOption);
-                    setVisible(false);
-                  }}
-                >
-                  <FontText className="font-trapRegular capitalize text-center text-[14px] leading-[20px] text-[#595959]">
-                    {menuOption.label}
-                  </FontText>
-                </MenuOption>
-              ))}
-            </DropdownMenu>
-          </View> */}
 
           {/* <ImageViewer
           imgSource={PlaceholderImage}
@@ -305,6 +267,40 @@ export default function AddEvent({ navigation }) {
             name="Timezone"
             dropdownWidth={width}
           />
+          <View className="mt-[30]">
+            <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
+              Location
+            </FontText>
+            <View className="rounded-[10px] py-[14] px-[14] bg-[#DAD8D8]/20 border border-[#DAD8D8]">
+              <TextInput
+                className="text-[17px]"
+                editable
+                multiline={true}
+                maxLength={200}
+                onChangeText={(text) => onChangeText(text)}
+                placeholder="Type your address here"
+                // value={value}
+              />
+            </View>
+          </View>
+          <View className="mt-[23] flex flex-row items-center justify-between">
+            <View>
+              <FontText className="font-chillaxNormal text-[17px] leading-[24px] text-[#595959]">
+                Display map with directions
+              </FontText>
+            </View>
+            <Switch
+              trackColor={{ false: "#F7F7F7", true: "#E4E0F5" }}
+              thumbColor={isEnabled ? "#7E62F0" : "#9A9898"}
+              style={{
+                transform: [{ scaleX: 0.85 }, { scaleY: 0.8 }],
+                marginVertical: -8,
+              }}
+              ios_backgroundColor="#F7F7F7"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+            />
+          </View>
         </ScrollView>
       ) : (
         <ScrollView
