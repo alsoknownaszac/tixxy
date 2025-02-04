@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     backgroundColor: "transparent",
+    width: 420,
   },
   menu: {
     position: "absolute",
