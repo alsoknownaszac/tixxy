@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  useWindowDimensions,
 } from "react-native";
 import PropTypes from "prop-types";
 
@@ -14,8 +15,10 @@ export const DropdownMenu = ({
   handleClose,
   trigger,
   children,
-  // dropdownWidth = 200,
+  dropdownWidth,
 }) => {
+  const { width } = useWindowDimensions();
+
   const triggerRef = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0, width: 0 });
 
@@ -58,7 +61,7 @@ export const DropdownMenu = ({
                   {
                     top: position.y - 80,
                     left: position.x + 30,
-                    // width: dropdownWidth,
+                    width: dropdownWidth || width,
                     gap: 8,
                   },
                 ]}
@@ -79,14 +82,16 @@ DropdownMenu.propTypes = {
   handleClose: PropTypes.func.isRequired,
   trigger: PropTypes.node.isRequired,
   children: PropTypes.node.isRequired,
-  // dropdownWidth: PropTypes.number,
+  dropdownWidth: PropTypes.number,
 };
 
-export const MenuOption = ({ onSelect, children }) => {
+export const MenuOption = ({ dropdownWidth, onSelect, children }) => {
+  const { width } = useWindowDimensions();
+
   return (
     <TouchableOpacity
       onPress={onSelect}
-      style={styles.menuOption}
+      style={[styles.menuOption, { width: dropdownWidth || width }]}
       accessibilityLabel="Menu Option"
       className="rounded-[5px] w-[180] py-[14] px-[14] bg-[#DAD8D8]/5 border border-[#DAD8D8]/50"
     >

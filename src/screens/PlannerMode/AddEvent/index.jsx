@@ -261,12 +261,12 @@ export default function AddEvent({ navigation }) {
               </FontText> */}
             </View>
           </View>
-          <CustomDropdown dropdownList={eventDropdownSelected} name="Privacy" />
           <CustomDropdown
-            dropdownList={utcDropdown}
-            name="Timezone"
-            dropdownWidth={width}
+            dropdownList={eventDropdownSelected}
+            name="Privacy"
+            dropdownWidth={200}
           />
+          <CustomDropdown dropdownList={utcDropdown} name="Timezone" />
           <View className="mt-[30]">
             <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
               Location
@@ -433,7 +433,10 @@ function CustomDropdown({ dropdownList, name, dropdownWidth }) {
         handleOpen={() => setVisible(true)}
         handleClose={() => setVisible(false)}
         trigger={
-          <View className="flex flex-row justify-between items-center rounded-[10px] w-[180] py-[14] px-[14] bg-[#DAD8D8]/10 border border-[#DAD8D8]">
+          <View
+            style={{ width: dropdownWidth }}
+            className="flex flex-row justify-between items-center rounded-[10px] py-[14] px-[14] bg-[#DAD8D8]/10 border border-[#DAD8D8]"
+          >
             <FontText className="font-trapRegular capitalize text-[17px] leading-[20px] text-[#595959]">
               {eventTypeDropdown.selected != 0
                 ? eventTypeDropdown.label
