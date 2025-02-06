@@ -13,10 +13,13 @@ import {
 import FontText from "../../../reuseable/FontText";
 import LayoutContainer from "../../../Layout/LayoutContainer";
 import BackArrow from "../../../../assets/icons/back_arrow.svg";
+import ForwardArrow from "../../../../assets/icons/forward_arrow.svg";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
 import { DropdownMenu, MenuOption } from "../../../reuseable/DropDown";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import Entypo from "@expo/vector-icons/Entypo";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 export default function AddEvent({ navigation }) {
   const insets = useSafeAreaInsets();
@@ -81,6 +84,16 @@ export default function AddEvent({ navigation }) {
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+
+  const [isPriceRangeEnabled, setIsPriceRangeEnabled] = useState(false);
+  const toggleSwitchPriceRange = () =>
+    setIsPriceRangeEnabled((previousState) => !previousState);
+
+  const [isPaidEventEnabled, setIsPaidEventEnabled] = useState(false);
+  const toggleSwitchPaidEvent = () => {
+    setIsPaidEventEnabled((previousState) => !previousState);
+    setIsPriceRangeEnabled(false);
+  };
 
   return (
     <LayoutContainer noSafeAreaProfile>
@@ -310,7 +323,274 @@ export default function AddEvent({ navigation }) {
             paddingRight: insets.right + 20,
           }}
           className="flex-1"
-        ></ScrollView>
+        >
+          <View className="flex flex-row items-center justify-between">
+            <View>
+              <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[3] text-[#595959]">
+                Paid Event
+              </FontText>
+              <FontText className="font-chillaxNormal text-[17px] leading-[24px] text-[#595959]">
+                Setup payment for this event
+              </FontText>
+            </View>
+            <Switch
+              trackColor={{ false: "#F7F7F7", true: "#E4E0F5" }}
+              thumbColor={isPaidEventEnabled ? "#7E62F0" : "#9A9898"}
+              style={{
+                transform: [{ scaleX: 0.85 }, { scaleY: 0.8 }],
+                marginVertical: -8,
+              }}
+              ios_backgroundColor="#F7F7F7"
+              onValueChange={toggleSwitchPaidEvent}
+              value={isPaidEventEnabled}
+            />
+          </View>
+          <View pointerEvents={!isPaidEventEnabled ? "none" : null}>
+            <View>
+              <View className="mt-[30]">
+                <FontText
+                  className={`font-chillaxSemibold text-[17px] leading-[24px] mb-[10] ${
+                    !isPaidEventEnabled ? "text-[#DAD8D8]" : "text-[#595959]"
+                  }`}
+                >
+                  Price
+                </FontText>
+                {!isPriceRangeEnabled ? (
+                  <View className="flex flex-row justify-between items-center rounded-[10px] w-2/6 py-[14] px-[16] bg-[#DAD8D8]/20 border border-[#DAD8D8]">
+                    <TextInput
+                      className="text-[17px]"
+                      editable
+                      numberOfLines={1}
+                      maxLength={2}
+                      onChangeText={(text) => onChangeText(text)}
+                      placeholder="0"
+                      // value={value}
+                    />
+                    <DropdownMenu
+                      dropdownWidth={50}
+                      visible={visible}
+                      handleOpen={() => setVisible(true)}
+                      handleClose={() => setVisible(false)}
+                      trigger={
+                        <View
+                          style={{ width: 37 }}
+                          className="flex flex-row justify-between items-center"
+                        >
+                          <FontText
+                            className={`font-trapRegular capitalize text-[20px] leading-[20px] ${
+                              !isPaidEventEnabled
+                                ? "text-[#DAD8D8]"
+                                : "text-[#595959]"
+                            }`}
+                          >
+                            {eventTypeDropdown.selected != 0
+                              ? eventTypeDropdown.label
+                              : "$"}
+                          </FontText>
+                          {visible === false ? (
+                            <AntDesign
+                              name="caretdown"
+                              size={11}
+                              color={
+                                !isPaidEventEnabled ? "#DAD8D8" : "#595959"
+                              }
+                            />
+                          ) : (
+                            <AntDesign
+                              name="caretup"
+                              size={11}
+                              color={
+                                !isPaidEventEnabled ? "#DAD8D8" : "#595959"
+                              }
+                            />
+                          )}
+                        </View>
+                      }
+                    >
+                      {[{ selected: 1, label: "$" }].map(
+                        (menuOption, indx) =>
+                          indx > 0 && (
+                            <MenuOption
+                              key={menuOption.selected}
+                              // onSelect={() => {
+                              //   setEventTypeDropdown(menuOption);
+                              //   setVisible(false);
+                              // }}
+                            >
+                              <FontText className="font-trapRegular capitalize text-center text-[14px] leading-[20px] text-[#595959]">
+                                {menuOption.label}
+                              </FontText>
+                            </MenuOption>
+                          )
+                      )}
+                    </DropdownMenu>
+                  </View>
+                ) : (
+                  <View className="flex gap-y-[12]">
+                    <View className="flex flex-row justify-between">
+                      <View className="rounded-[10px] py-[14] px-[14] bg-[#DAD8D8]/20 border w-[62%] border-[#DAD8D8]">
+                        <TextInput
+                          className="text-[17px]"
+                          editable
+                          numberOfLines={4}
+                          maxLength={40}
+                          onChangeText={(text) => onChangeText(text)}
+                          placeholder="ticket type e.g Regular, Vip...."
+                          // value={value}
+                        />
+                      </View>
+                      <View className="flex flex-row justify-between items-center rounded-[10px] w-[35%] py-[14] px-[16] bg-[#DAD8D8]/20 border border-[#DAD8D8]">
+                        <TextInput
+                          className="text-[17px]"
+                          editable
+                          numberOfLines={1}
+                          maxLength={2}
+                          onChangeText={(text) => onChangeText(text)}
+                          placeholder="0"
+                          // value={value}
+                        />
+                        <DropdownMenu
+                          dropdownWidth={50}
+                          visible={visible}
+                          handleOpen={() => setVisible(true)}
+                          handleClose={() => setVisible(false)}
+                          trigger={
+                            <View
+                              style={{ width: 37 }}
+                              className="flex flex-row justify-between items-center"
+                            >
+                              <FontText
+                                className={`font-trapRegular capitalize text-[20px] leading-[20px] ${
+                                  !isPaidEventEnabled
+                                    ? "text-[#DAD8D8]"
+                                    : "text-[#595959]"
+                                }`}
+                              >
+                                {eventTypeDropdown.selected != 0
+                                  ? eventTypeDropdown.label
+                                  : "$"}
+                              </FontText>
+                              {visible === false ? (
+                                <AntDesign
+                                  name="caretdown"
+                                  size={11}
+                                  color={
+                                    !isPaidEventEnabled ? "#DAD8D8" : "#595959"
+                                  }
+                                />
+                              ) : (
+                                <AntDesign
+                                  name="caretup"
+                                  size={11}
+                                  color={
+                                    !isPaidEventEnabled ? "#DAD8D8" : "#595959"
+                                  }
+                                />
+                              )}
+                            </View>
+                          }
+                        >
+                          {[{ selected: 1, label: "$" }].map(
+                            (menuOption, indx) =>
+                              indx > 0 && (
+                                <MenuOption
+                                  key={menuOption.selected}
+                                  // onSelect={() => {
+                                  //   setEventTypeDropdown(menuOption);
+                                  //   setVisible(false);
+                                  // }}
+                                >
+                                  <FontText className="font-trapRegular capitalize text-center text-[14px] leading-[20px] text-[#595959]">
+                                    {menuOption.label}
+                                  </FontText>
+                                </MenuOption>
+                              )
+                          )}
+                        </DropdownMenu>
+                      </View>
+                    </View>
+                    <View className="flex flex-row justify-center">
+                      <Entypo
+                        name="plus"
+                        size={36}
+                        color="black"
+                        style={{
+                          borderRadius: 100,
+                        }}
+                        backgroundColor="#F3F2F2"
+                      />
+                    </View>
+                  </View>
+                )}
+              </View>
+            </View>
+            <View className="mt-[30] flex flex-row items-center justify-between">
+              <View className="w-3/4">
+                <FontText
+                  className={`font-chillaxSemibold text-[17px] leading-[24px] mb-[3] ${
+                    !isPaidEventEnabled ? "text-[#DAD8D8]" : "text-[#595959]"
+                  }`}
+                >
+                  Price Range
+                </FontText>
+                <FontText
+                  className={`font-chillaxNormal text-[17px] leading-[24px] text-[#595959] ${
+                    !isPaidEventEnabled ? "text-[#DAD8D8]" : "text-[#595959]"
+                  }`}
+                >
+                  For events that have various price range e.g VIP
+                </FontText>
+              </View>
+              <Switch
+                trackColor={{
+                  false: !isPriceRangeEnabled ? "#DAD8D8" : "#F7F7F7",
+                  true: "#E4E0F5",
+                }}
+                thumbColor={!isPriceRangeEnabled ? "#DAD8D8" : "#7E62F0"}
+                style={{
+                  transform: [{ scaleX: 0.85 }, { scaleY: 0.8 }],
+                  marginVertical: -8,
+                }}
+                ios_backgroundColor={
+                  !isPaidEventEnabled ? "#DAD8D8" : "#F7F7F7"
+                }
+                onValueChange={toggleSwitchPriceRange}
+                value={isPriceRangeEnabled}
+              />
+            </View>
+            <View className="mt-[30] flex flex-row items-center justify-between">
+              <View className="w-3/4">
+                <FontText
+                  className={`font-chillaxSemibold text-[17px] leading-[24px] mb-[3] ${
+                    !isPaidEventEnabled ? "text-[#DAD8D8]" : "text-[#595959]"
+                  }`}
+                >
+                  Payment Method
+                </FontText>
+                <FontText
+                  className={`font-chillaxNormal text-[17px] leading-[24px] ${
+                    !isPaidEventEnabled ? "text-[#DAD8D8]" : "text-[#595959]"
+                  }`}
+                >
+                  Select the account to collect the payments for tickets
+                </FontText>
+              </View>
+              <Pressable onPress={() => {}}>
+                <View
+                  className={`rounded-[10px] p-[3px]  ${
+                    !isPaidEventEnabled ? "bg-[#DAD8D8]" : "bg-[#F3F2F2]"
+                  }`}
+                >
+                  <MaterialIcons
+                    name="keyboard-arrow-right"
+                    size={24}
+                    color={!isPaidEventEnabled ? "#FFFFFF" : "#2A2B2A"}
+                  />
+                </View>
+              </Pressable>
+            </View>
+          </View>
+        </ScrollView>
       )}
       <View className="p-[16]">
         <TouchableOpacity

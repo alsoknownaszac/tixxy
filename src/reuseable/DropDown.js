@@ -17,8 +17,6 @@ export const DropdownMenu = ({
   children,
   dropdownWidth,
 }) => {
-  const { width } = useWindowDimensions();
-
   const triggerRef = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0, width: 0 });
 
@@ -59,9 +57,9 @@ export const DropdownMenu = ({
                 style={[
                   styles.menu,
                   {
-                    top: position.y - 80,
-                    left: position.x + 30,
-                    width: dropdownWidth || width,
+                    top: position.y + 2,
+                    left: position.x,
+                    width: dropdownWidth || position.width,
                     gap: 8,
                   },
                 ]}
@@ -86,14 +84,12 @@ DropdownMenu.propTypes = {
 };
 
 export const MenuOption = ({ dropdownWidth, onSelect, children }) => {
-  const { width } = useWindowDimensions();
-
   return (
     <TouchableOpacity
       onPress={onSelect}
-      style={[styles.menuOption, { width: dropdownWidth || width }]}
+      style={[styles.menuOption, { width: dropdownWidth }]}
       accessibilityLabel="Menu Option"
-      className="rounded-[5px] w-[180] py-[14] px-[14] bg-[#DAD8D8]/5 border border-[#DAD8D8]/50"
+      className="bg-[#DAD8D8]/5 border border-[#DAD8D8]/10"
     >
       {children}
     </TouchableOpacity>
@@ -116,7 +112,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     backgroundColor: "white",
     borderRadius: 5,
-    padding: 10,
+    padding: 4,
+    paddingHorizontal: 8,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -124,6 +121,6 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   menuOption: {
-    padding: 5,
+    padding: 3,
   },
 });
