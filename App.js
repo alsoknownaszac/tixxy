@@ -149,7 +149,7 @@ function NavigationProvider() {
           // }}
         />
         {/* planner mode: guest list */}
-        <Stack.Screen name="GuestList" component={GuestList()} />
+        <Stack.Screen name="GuestList" component={GuestList} />
         {/* user mode: */}
 
         <Stack.Screen name="EventDetails" component={EventDetails} />
