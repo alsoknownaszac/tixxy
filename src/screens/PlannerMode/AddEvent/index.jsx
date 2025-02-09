@@ -575,7 +575,7 @@ export default function AddEvent({ navigation }) {
                   Select the account to collect the payments for tickets
                 </FontText>
               </View>
-              <Pressable onPress={() => {}}>
+              <Pressable onPress={() => navigation.navigate("GuestList")}>
                 <View
                   className={`rounded-[10px] p-[3px]  ${
                     !isPaidEventEnabled ? "bg-[#DAD8D8]" : "bg-[#F3F2F2]"
