@@ -15,19 +15,19 @@ export default function GuestList({ navigation }) {
       title: "Share link with Guest",
       // icon: <Ionicons name="person" size={18} color="black" />,
       naviagtionName: "PersonalInfo",
-      key: "1",
+      key: 1,
     },
     {
       title: "Register Guest",
       // icon: <MaterialIcons name="content-paste" size={18} color="black" />,
       naviagtionName: "History",
-      key: "2",
+      key: 2,
     },
     {
       title: "Import list",
       // icon: <Feather name="settings" size={18} color="black" />,
       naviagtionName: "Settings",
-      key: "3",
+      key: 3,
     },
   ]);
 
@@ -110,7 +110,7 @@ export default function GuestList({ navigation }) {
                 keyExtractor={(item) => item.id}
                 data={guestTab}
                 renderItem={({ item, index }) => (
-                  <GuestListCard {...{ item }} />
+                  <GuestListCard {...{ item, index }} />
                 )}
               />
             </View>

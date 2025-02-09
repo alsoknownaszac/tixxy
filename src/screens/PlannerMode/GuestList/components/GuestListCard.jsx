@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { Pressable, View } from "react-native";
 import FontText from "../../../../reuseable/FontText";
 
-export default function GuestListCard({ navigation, item }) {
+export default function GuestListCard({ navigation, item, index }) {
   const [openList, setOpenList] = useState(false);
+  const [activeKey] = useState(item.key - 1);
+
+  console.log(activeKey);
 
   return (
     <Pressable
       onPress={() => {
-        setOpenList(!openList);
+        activeKey == index && setOpenList(!openList);
       }}
     >
       <View className="border-2 border-[#F3F2F2] mt-[16px] rounded-[20px] ">
@@ -20,11 +23,13 @@ export default function GuestListCard({ navigation, item }) {
             </FontText>
           </View>
         </View>
-        {openList && <View className="h-[1.5px] bg-[#DAD8D8] w-4/5 mx-auto" />}
+        {openList && activeKey == index && (
+          <View className="h-[1.5px] bg-[#DAD8D8] w-4/5 mx-auto" />
+        )}
 
-        {openList && (
+        {openList && activeKey == index && (
           <View className="p-[20px] px-[12px]">
-            <FontText>
+            <FontText className="font-chillaxRegular text-[14px] text-[#595959] leading-[20px]">
               To share a link with your guest, you need to create a form
               questionnaire that includes the details of your quests that you
               need, for example their names, phone numbers etc. thereafter you
