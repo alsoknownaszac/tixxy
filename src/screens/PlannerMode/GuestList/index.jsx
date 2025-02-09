@@ -10,7 +10,7 @@ import GuestListCard from "./components/GuestListCard";
 export default function GuestList({ navigation }) {
   const [guestList, setGuestList] = useState([]);
 
-  const [guestTab, setGuestTab] = useState([
+  const [guestTab] = useState([
     {
       title: "Share link with Guest",
       // icon: <Ionicons name="person" size={18} color="black" />,
@@ -27,18 +27,6 @@ export default function GuestList({ navigation }) {
       title: "Import list",
       // icon: <Feather name="settings" size={18} color="black" />,
       naviagtionName: "Settings",
-      key: "3",
-    },
-    {
-      title: "Planner Mode",
-      // icon: (
-      //   <MaterialCommunityIcons
-      //     name="calendar-multiple"
-      //     size={18}
-      //     color="black"
-      //   />
-      // ),
-      naviagtionName: "Profile",
       key: "3",
     },
   ]);
@@ -113,15 +101,19 @@ export default function GuestList({ navigation }) {
             </View>
           </View>
 
-          <View className="flex-1">
-            <FlatList
-              vertical
-              scrollEnabled={false}
-              showsHorizontalScrollIndicator={false}
-              keyExtractor={(item) => item.id}
-              data={guestTab}
-              renderItem={({ item, index }) => <GuestListCard {...{ item }} />}
-            />
+          <View className="flex">
+            <View className="w-[311px] mx-auto">
+              <FlatList
+                vertical
+                scrollEnabled={false}
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => item.id}
+                data={guestTab}
+                renderItem={({ item, index }) => (
+                  <GuestListCard {...{ item }} />
+                )}
+              />
+            </View>
           </View>
         </View>
       )}
