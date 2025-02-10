@@ -13,18 +13,21 @@ export default function GuestList({ navigation }) {
   const [guestTab] = useState([
     {
       title: "Share link with Guest",
+      info: "To share a link with your guest, you need to create a form questionnaire that includes the details of your quests that you need, for example their names, phone numbers etc. thereafter you share the link to the people you want present, and they fill the form to get their details saved.",
       // icon: <Ionicons name="person" size={18} color="black" />,
       naviagtionName: "PersonalInfo",
       key: 1,
     },
     {
       title: "Register Guest",
+      info: "Share link with guest Register guest To register guests, you need to manually enter the details of guests, for example their names or phone numbers. thereafter you send their invitations to them.",
       // icon: <MaterialIcons name="content-paste" size={18} color="black" />,
       naviagtionName: "History",
       key: 2,
     },
     {
       title: "Import list",
+      info: "To Import guest list, you should create the guest list in a spread sheet or pdf in a table format and then upload.",
       // icon: <Feather name="settings" size={18} color="black" />,
       naviagtionName: "Settings",
       key: 3,
