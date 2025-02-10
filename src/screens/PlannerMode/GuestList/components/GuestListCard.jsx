@@ -30,12 +30,16 @@ export default function GuestListCard({ navigation, item, index }) {
         {openList && activeKey == index && (
           <View className="p-[20px] px-[12px]">
             <FontText className="font-chillaxRegular text-[14px] text-[#595959] leading-[20px]">
-              To share a link with your guest, you need to create a form
-              questionnaire that includes the details of your quests that you
-              need, for example their names, phone numbers etc. thereafter you
-              share the link to the people you want present, and they fill the
-              form to get their details saved.
+              {item.info}
             </FontText>
+            <TouchableOpacity
+              onPress={() => {}}
+              className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
+            >
+              <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
+                {item.btn_name}
+              </FontText>
+            </TouchableOpacity>
           </View>
         )}
       </View>
