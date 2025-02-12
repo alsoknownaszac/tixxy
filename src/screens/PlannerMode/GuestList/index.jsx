@@ -16,7 +16,7 @@ export default function GuestList({ navigation }) {
       info: "To share a link with your guest, you need to create a form questionnaire that includes the details of your quests that you need, for example their names, phone numbers etc. thereafter you share the link to the people you want present, and they fill the form to get their details saved.",
       // icon: <Ionicons name="person" size={18} color="black" />,
       btn_name: "Create Form",
-      naviagtionName: "PersonalInfo",
+      btn_link: "CreateForm",
       key: 1,
     },
     {
@@ -24,7 +24,7 @@ export default function GuestList({ navigation }) {
       info: "Share link with guest Register guest To register guests, you need to manually enter the details of guests, for example their names or phone numbers. thereafter you send their invitations to them.",
       // icon: <MaterialIcons name="content-paste" size={18} color="black" />,
       btn_name: "Register Guest",
-      naviagtionName: "History",
+      btn_link: "RegisterGuest",
       key: 2,
     },
     {
@@ -32,7 +32,7 @@ export default function GuestList({ navigation }) {
       info: "To Import guest list, you should create the guest list in a spread sheet or pdf in a table format and then upload.",
       // icon: <Feather name="settings" size={18} color="black" />,
       btn_name: "Import List",
-      naviagtionName: "Settings",
+      btn_link: "ImportList",
       key: 3,
     },
   ]);
