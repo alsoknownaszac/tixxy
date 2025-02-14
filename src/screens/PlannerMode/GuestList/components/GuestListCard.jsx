@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Pressable, View } from "react-native";
+import { Pressable, View, TouchableOpacity } from "react-native";
 import FontText from "../../../../reuseable/FontText";
 
 export default function GuestListCard({ navigation, item, index }) {
@@ -14,10 +14,10 @@ export default function GuestListCard({ navigation, item, index }) {
         activeKey == index && setOpenList(!openList);
       }}
     >
-      <View className="border-2 border-[#F3F2F2] mt-[16px] rounded-[20px] ">
+      <View className="border-2 border-[#F3F2F2] mt-[16px] rounded-[20px]">
         <View className="p-[20px] flex flex-row items-center justify-center">
           <View className="flex flex-row items-center gap-2">
-            {/* {item.icon} */}
+            {item.icon}
             <FontText className="font-trapMedium text-[16px] text-[#2A2B2A] leading-[20px]">
               {item.title}
             </FontText>

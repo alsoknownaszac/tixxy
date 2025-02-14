@@ -4,6 +4,9 @@ import LayoutContainer from "../../../Layout/LayoutContainer";
 import BackArrow from "../../../../assets/icons/back_arrow.svg";
 import MoreBtn from "../../../../assets/icons/more_icon.svg";
 import NoGuestSvg from "../../../../assets/icons/no_guest.svg";
+import SendIcon from "../../../../assets/icons/send_icon.svg";
+import KeyboardIcon from "../../../../assets/icons/keyboard_icon.svg";
+import ImportIcon from "../../../../assets/icons/import_icon.svg";
 import FontText from "../../../reuseable/FontText";
 import GuestListCard from "./components/GuestListCard";
 
@@ -14,7 +17,9 @@ export default function GuestList({ navigation }) {
     {
       title: "Share link with Guest",
       info: "To share a link with your guest, you need to create a form questionnaire that includes the details of your quests that you need, for example their names, phone numbers etc. thereafter you share the link to the people you want present, and they fill the form to get their details saved.",
-      // icon: <Ionicons name="person" size={18} color="black" />,
+      icon: (
+        <SendIcon width={24} height={24} strokeWidth={1} stroke="#2A2B2A" />
+      ),
       btn_name: "Create Form",
       btn_link: "CreateForm",
       key: 1,
@@ -22,7 +27,9 @@ export default function GuestList({ navigation }) {
     {
       title: "Register Guest",
       info: "Share link with guest Register guest To register guests, you need to manually enter the details of guests, for example their names or phone numbers. thereafter you send their invitations to them.",
-      // icon: <MaterialIcons name="content-paste" size={18} color="black" />,
+      icon: (
+        <KeyboardIcon width={24} height={24} strokeWidth={1} stroke="#2A2B2A" />
+      ),
       btn_name: "Register Guest",
       btn_link: "RegisterGuest",
       key: 2,
@@ -30,7 +37,9 @@ export default function GuestList({ navigation }) {
     {
       title: "Import list",
       info: "To Import guest list, you should create the guest list in a spread sheet or pdf in a table format and then upload.",
-      // icon: <Feather name="settings" size={18} color="black" />,
+      icon: (
+        <ImportIcon width={24} height={24} strokeWidth={1} stroke="#2A2B2A" />
+      ),
       btn_name: "Import List",
       btn_link: "ImportList",
       key: 3,
