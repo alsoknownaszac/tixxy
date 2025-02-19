@@ -66,8 +66,8 @@ export default function EventDetails({ navigation }) {
             blurRadius={1.2}
             onLoad={() => setLoaded(true)}
           />
-          <View className="flex flex-row items-center rouneded-[8px] bg-[#82828287]">
-            <FontText className="font-trapRegular text-[24px] text-[#FFFFFF] leading-[32px]">
+          <View className="flex flex-row items-center rouneded-[8px] bg-[#82828287] px-[12px] py-[6px]">
+            <FontText className="font-satoshiSemibold text-[16px] text-[#FFFFFF] leading-[20px]">
               Guest List
             </FontText>
             <View className="flex flex-row items-center">
