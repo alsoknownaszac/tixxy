@@ -14,6 +14,9 @@ import SendIcon from "../../../assets/icons/send_icon.svg";
 import ArchiveAdd from "../../../assets/icons/archive_add.svg";
 import BackArrow from "../../../assets/icons/back_arrow.svg";
 import MoreBtn from "../../../assets/icons/more_icon.svg";
+import GroupIcon from "../../../assets/icons/group_icon.svg";
+import TagUser from "../../../assets/icons/tag_user.svg";
+import Entypo from "@expo/vector-icons/Entypo";
 
 export default function EventDetails({ navigation }) {
   return (
@@ -63,13 +66,33 @@ export default function EventDetails({ navigation }) {
             blurRadius={1.2}
             onLoad={() => setLoaded(true)}
           />
-          <View className="flex items-center">
+          <View className="flex flex-row items-center rouneded-[8px] bg-[#82828287]">
             <FontText className="font-trapRegular text-[24px] text-[#FFFFFF] leading-[32px]">
-              Jane Doe
+              Guest List
             </FontText>
-            <FontText className="mt-[4px] font-trapRegular text-[16px] text-[#FFFFFF] leading-[20px]">
-              janedoe1@gmail.com
-            </FontText>
+            <View className="flex flex-row items-center">
+              <GroupIcon
+                width={20}
+                height={20}
+                strokeWidth={1}
+                stroke="#DAD8D8"
+              />
+              <FontText className="mt-[4px] font-trapRegular text-[16px] text-[#FFFFFF] leading-[20px]">
+                25
+              </FontText>
+              <View className="mx-[16px]">
+                <Entypo name="dot-single" size={24} color="black" />
+              </View>
+              <TagUser
+                width={20}
+                height={20}
+                strokeWidth={1}
+                stroke="#DAD8D8"
+              />
+              <FontText className="mt-[4px] font-trapRegular text-[16px] text-[#FFFFFF] leading-[20px]">
+                05
+              </FontText>
+            </View>
           </View>
         </View>
       </View>
@@ -92,14 +115,14 @@ export default function EventDetails({ navigation }) {
         <View className="flex flex-row items-center gap-[14px] mt-[20px]">
           <Pressable onPress={() => {}}>
             <ArchiveAdd
-              width={26}
-              height={26}
+              width={20}
+              height={20}
               strokeWidth={1}
-              stroke="#9A9898"
+              stroke="#292D32"
             />
           </Pressable>
           <Pressable onPress={() => {}}>
-            <SendIcon width={26} height={26} strokeWidth={1} stroke="#9A9898" />
+            <SendIcon width={20} height={20} strokeWidth={1} stroke="#292D32" />
           </Pressable>
         </View>
         <View className="">
