@@ -10,6 +10,9 @@ import {
 } from "react-native";
 import FontText from "../../reuseable/FontText";
 import BackArrow from "../../../assets/icons/back_arrow.svg";
+import SendIcon from "../../../assets/icons/send_icon.svg";
+import ArchiveAdd from "../../../assets/icons/archive_add.svg";
+import BackArrow from "../../../assets/icons/back_arrow.svg";
 import MoreBtn from "../../../assets/icons/more_icon.svg";
 
 export default function EventDetails({ navigation }) {
@@ -72,32 +75,40 @@ export default function EventDetails({ navigation }) {
       </View>
       <View className="flex-1">
         <View className="">
-          <FontText className="font-trapRegular text-[24px] text-[#FFFFFF] leading-[32px]">
+          <FontText className="font-chillaxRegular text-[12px] text-[#FFFFFF] leading-[17px]">
             May 7, 2023 4:30PM
           </FontText>
         </View>
         <View className="">
-          <FontText className="font-trapRegular text-[24px] text-[#FFFFFF] leading-[32px]">
+          <FontText className="font-satoshiBold text-[18px] text-[#FFFFFF] leading-[28px]">
             2030 Movement: NFTs & Blockchain - Hot Today, Not Tomorrow?
           </FontText>
         </View>
         <View className="">
-          <FontText className="font-trapRegular text-[24px] text-[#FFFFFF] leading-[32px]">
+          <FontText className="font-chillaxRegular text-[16px] text-[#FFFFFF] leading-[22px]">
             Mongolia
           </FontText>
         </View>
+        <View className="flex flex-row items-center gap-[14px] mt-[20px]">
+          <Pressable onPress={() => {}}>
+            <ArchiveAdd
+              width={26}
+              height={26}
+              strokeWidth={1}
+              stroke="#9A9898"
+            />
+          </Pressable>
+          <Pressable onPress={() => {}}>
+            <SendIcon width={26} height={26} strokeWidth={1} stroke="#9A9898" />
+          </Pressable>
+        </View>
         <View className="">
-          <FontText className="font-trapRegular text-[24px] text-[#FFFFFF] leading-[32px]">
+          <FontText className="font-trapRegular text-[20px] text-[#FFFFFF] leading-[28px]">
             Description
           </FontText>
         </View>
         <View className="">
-          <FontText className="font-trapRegular text-[24px] text-[#FFFFFF] leading-[32px]">
-            Description
-          </FontText>
-        </View>
-        <View className="">
-          <FontText className="font-trapRegular text-[24px] text-[#FFFFFF] leading-[32px]">
+          <FontText className="font-trapRegular text-[16px] text-[#FFFFFF] leading-[19px]">
             We are Fotizo show hauz an entertainment company in south South we
             put together outdoor event that feature Lifestyle and design to
             promote innovation and most Premium Excitement experience for young
