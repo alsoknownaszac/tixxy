@@ -18,7 +18,7 @@ import GroupIcon from "../../../assets/icons/group_icon.svg";
 import TagUser from "../../../assets/icons/tag_user.svg";
 import Entypo from "@expo/vector-icons/Entypo";
 
-export default function EventDetails({ navigation }) {
+export default function PlannerEventDetails({ navigation }) {
   return (
     <View className="flex-1 bg-[#FCFCFC]">
       <View className="mb-[22] flex-initial rounded-b-[20px]">

@@ -8,7 +8,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import FontText from "../../reuseable/FontText";
+import FontText from "../../../reuseable/FontText";
 import BackArrow from "../../../assets/icons/back_arrow.svg";
 import SendIcon from "../../../assets/icons/send_icon.svg";
 import ArchiveAdd from "../../../assets/icons/archive_add.svg";
@@ -145,7 +145,7 @@ export default function EventDetails({ navigation }) {
           className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
         >
           <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
-            View List
+            Get a Ticket
           </FontText>
         </TouchableOpacity>
       </View>

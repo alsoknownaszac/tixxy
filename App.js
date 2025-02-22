@@ -43,7 +43,7 @@ import EventDetails from "./src/screens/Dashboard/EventDetails";
 import { AppProvider } from "./src/lib/appReducer";
 import { useGlobalState } from "./src/lib/appContext";
 import AddEvent from "./src/screens/PlannerMode/AddEvent";
-import EventDetails from "./src/screens/PlannerMode/EventDetails";
+import PlannerEventDetails from "./src/screens/PlannerMode/PlannerEventDetails";
 // import { IoAlbums } from "react-icons/io5";
 import Svg, { Circle, Path } from "react-native-svg";
 import GuestList from "./src/screens/PlannerMode/GuestList";
@@ -151,7 +151,10 @@ function NavigationProvider() {
         />
         {/* planner mode: guest list */}
         <Stack.Screen name="GuestList" component={GuestList} />
-        <Stack.Screen name="EventDetails" component={EventDetails} />
+        <Stack.Screen
+          name="PlannerEventDetails"
+          component={PlannerEventDetails}
+        />
         {/* user mode: */}
 
         <Stack.Screen name="EventDetails" component={EventDetails} />
