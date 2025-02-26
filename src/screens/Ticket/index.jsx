@@ -5,7 +5,7 @@ import { Pressable, ScrollView, View, useWindowDimensions } from "react-native";
 import { FlatList } from "react-native";
 import EventMainCard from "../../reuseable/EventMainCard";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import TicketDetailsModal from "./components/TicketDetailsModal";
+import TicketDetailsModal from "../components/EventDetails/TicketDetailsModal";
 
 export default function Ticket() {
   const { width, height } = useWindowDimensions();

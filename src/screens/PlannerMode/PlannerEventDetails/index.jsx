@@ -8,7 +8,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import FontText from "../../reuseable/FontText";
+import FontText from "../../../reuseable/FontText";
 import BackArrow from "../../../../assets/icons/back_arrow.svg";
 import SendIcon from "../../../../assets/icons/send_icon.svg";
 import ArchiveAdd from "../../../../assets/icons/archive_add.svg";

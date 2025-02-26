@@ -38,7 +38,7 @@ import Profile from "./src/screens/Profile";
 import PersonalInfo from "./src/screens/Profile/PersonalInfo";
 import History from "./src/screens/Profile/History";
 import Settings from "./src/screens/Profile/Settings";
-import EventDetails from "./src/screens/Dashboard/EventDetails";
+import EventDetails from "./src/screens/components/EventDetails";
 
 import { AppProvider } from "./src/lib/appReducer";
 import { useGlobalState } from "./src/lib/appContext";
