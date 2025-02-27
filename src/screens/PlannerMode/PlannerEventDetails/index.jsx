@@ -10,11 +10,11 @@ import {
 } from "react-native";
 import FontText from "../../reuseable/FontText";
 import BackArrow from "../../../../assets/icons/back_arrow.svg";
-import SendIcon from "../../../assets/icons/send_icon.svg";
-import ArchiveAdd from "../../../assets/icons/archive_add.svg";
-import MoreBtn from "../../../assets/icons/more_icon.svg";
-import GroupIcon from "../../../assets/icons/group_icon.svg";
-import TagUser from "../../../assets/icons/tag_user.svg";
+import SendIcon from "../../../../assets/icons/send_icon.svg";
+import ArchiveAdd from "../../../../assets/icons/archive_add.svg";
+import MoreBtn from "../../../../assets/icons/more_icon.svg";
+import GroupIcon from "../../../../assets/icons/group_icon.svg";
+import TagUser from "../../../../assets/icons/tag_user.svg";
 import Entypo from "@expo/vector-icons/Entypo";
 
 export default function PlannerEventDetails({ navigation }) {
