@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import FontText from "../../../reuseable/FontText";
 import BackArrow from "../../../assets/icons/back_arrow.svg";
-import BackArrow from "../../../assets/icons/back_arrow.svg";
+import SadFace from "../../../assets/icons/sad_face.svg";
 import MoreBtn from "../../../assets/icons/more_icon.svg";
 import PaymentListCard from "./components/PaymentListCard";
 
@@ -39,7 +39,20 @@ export default function PaymentEmptyScreens({ navigation }) {
         </View>
       </View>
       <View className="pt-[20px] pb-[30px]">
-        <View className="flex"></View>
+        <View className="flex">
+          <SadFace width={91} height={96} strokeWidth={1} stroke="#374449" />
+          <FontText className="font-chillaxMedium text-center text-[16px] leading-[24px] text-[#2A2B2A]">
+            You have no payment method, create new one
+          </FontText>
+          <TouchableOpacity
+            onPress={() => {}}
+            className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
+          >
+            <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
+              Create
+            </FontText>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <StatusBar style="auto" />

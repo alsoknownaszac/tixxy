@@ -11,7 +11,6 @@ import {
 } from "react-native";
 import FontText from "../../reuseable/FontText";
 import BackArrow from "../../../assets/icons/back_arrow.svg";
-import BackArrow from "../../../assets/icons/back_arrow.svg";
 import MoreBtn from "../../../assets/icons/more_icon.svg";
 import PaymentListCard from "./components/PaymentListCard";
 
