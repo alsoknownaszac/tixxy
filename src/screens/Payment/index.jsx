@@ -12,8 +12,6 @@ import {
 import FontText from "../../../reuseable/FontText";
 import BackArrow from "../../../assets/icons/back_arrow.svg";
 import SadFace from "../../../assets/icons/sad_face.svg";
-import MoreBtn from "../../../assets/icons/more_icon.svg";
-import PaymentListCard from "./components/PaymentListCard";
 
 export default function PaymentEmptyScreens({ navigation }) {
   return (
