@@ -23,10 +23,16 @@ function appReducer(state, action) {
         mode: !state.mode,
       };
     }
+    case "eventPaidBool": {
+      return {
+        ...state,
+        event: !state.event,
+      };
+    }
     default: {
       throw Error("Unknown action: " + action.type);
     }
   }
 }
 
-const initialVal = { mode: false };
+const initialVal = { mode: false, event: false };

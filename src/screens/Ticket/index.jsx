@@ -6,8 +6,17 @@ import { FlatList } from "react-native";
 import EventMainCard from "../../reuseable/EventMainCard";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import TicketDetailsModal from "../components/EventDetails/TicketDetailsModal";
+import { useGlobalReducer, useGlobalState } from "../../lib/appContext";
 
-export default function Ticket() {
+export default function Ticket({ navigation }) {
+  const { event } = useGlobalState();
+  const dispatch = useGlobalReducer();
+
+  const toggleSwitch = () =>
+    dispatch({
+      type: "switchMode",
+    });
+
   const { width, height } = useWindowDimensions();
 
   const imageWidth = width - 40;
@@ -77,7 +86,13 @@ export default function Ticket() {
           keyExtractor={(item) => item.id}
           data={images}
           renderItem={({ item, index }) => (
-            <Pressable onPress={() => setModalVisible(true)}>
+            <Pressable
+              onPress={() =>
+                event === false
+                  ? navigation.navigate("EventDetails")
+                  : setModalVisible(true)
+              }
+            >
               <EventMainCard
                 item={item}
                 setLoaded={setLoaded}
@@ -101,6 +116,11 @@ export default function Ticket() {
           height: height / 2.34,
         }}
       >
+        <Pressable onPress={() => toggleSwitch}>
+          <FontText className="mb-[15] font-satoshiBold text-[25px] leading-[28px]">
+            CLICK
+          </FontText>
+        </Pressable>
         <FontText className="mb-[15] font-satoshiBold text-[25px] leading-[28px]">
           Upcoming
         </FontText>
