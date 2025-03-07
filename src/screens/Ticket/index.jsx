@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import LayoutContainer from "../../Layout/LayoutContainer";
 import FontText from "../../reuseable/FontText";
-import { Pressable, ScrollView, View, useWindowDimensions } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  TouchableOpacity,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import { FlatList } from "react-native";
 import EventMainCard from "../../reuseable/EventMainCard";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -12,10 +18,9 @@ export default function Ticket({ navigation }) {
   const { event } = useGlobalState();
   const dispatch = useGlobalReducer();
 
-  const toggleSwitch = () =>
-    dispatch({
-      type: "switchMode",
-    });
+  const [paidEvent, setPaidEvent] = useState(event);
+
+  console.log(paidEvent);
 
   const { width, height } = useWindowDimensions();
 
@@ -88,7 +93,7 @@ export default function Ticket({ navigation }) {
           renderItem={({ item, index }) => (
             <Pressable
               onPress={() =>
-                event === false
+                paidEvent === false
                   ? navigation.navigate("EventDetails")
                   : setModalVisible(true)
               }
@@ -116,11 +121,17 @@ export default function Ticket({ navigation }) {
           height: height / 2.34,
         }}
       >
-        <Pressable onPress={() => toggleSwitch}>
+        <TouchableOpacity
+          onPress={() =>
+            dispatch({
+              type: "eventPaidBool",
+            })
+          }
+        >
           <FontText className="mb-[15] font-satoshiBold text-[25px] leading-[28px]">
             CLICK
           </FontText>
-        </Pressable>
+        </TouchableOpacity>
         <FontText className="mb-[15] font-satoshiBold text-[25px] leading-[28px]">
           Upcoming
         </FontText>
@@ -131,14 +142,22 @@ export default function Ticket({ navigation }) {
           keyExtractor={(item) => item.id}
           data={images}
           renderItem={({ item, index }) => (
-            <EventMainCard
-              item={item}
-              setLoaded={setLoaded}
-              imageWidth={imageWidth}
-              containerStyle={{
-                marginBottom: index === lastItemArr ? 20 : 15,
-              }}
-            />
+            <Pressable
+              onPress={() =>
+                paidEvent === false
+                  ? navigation.navigate("EventDetails")
+                  : setModalVisible(true)
+              }
+            >
+              <EventMainCard
+                item={item}
+                setLoaded={setLoaded}
+                imageWidth={imageWidth}
+                containerStyle={{
+                  marginBottom: index === lastItemArr ? 20 : 15,
+                }}
+              />
+            </Pressable>
           )}
         />
       </View>
