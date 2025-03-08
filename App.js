@@ -394,7 +394,10 @@ function PlannerView() {
         tabBarButton: (props) => <TouchableOpacity {...props} />,
       })}
     >
-      <Tab.Screen name="Explore" component={Dashboard} />
+      <Tab.Screen
+        name="Explore"
+        component={mode == false ? Dashboard : PlannerView}
+      />
       <Tab.Screen
         options={{ tabBarStyle: { display: "none" } }}
         name="AddEvent"

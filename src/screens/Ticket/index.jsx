@@ -18,7 +18,7 @@ export default function Ticket({ navigation }) {
   const { event } = useGlobalState();
   const dispatch = useGlobalReducer();
 
-  const [paidEvent, setPaidEvent] = useState(event);
+  const [paidEvent, setPaidEvent] = useState(true);
 
   console.log(paidEvent);
 
