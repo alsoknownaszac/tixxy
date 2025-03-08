@@ -47,6 +47,7 @@ import PlannerEventDetails from "./src/screens/PlannerMode/PlannerEventDetails";
 // import { IoAlbums } from "react-icons/io5";
 import Svg, { Circle, Path } from "react-native-svg";
 import GuestList from "./src/screens/PlannerMode/GuestList";
+import PlannerDashboard from "./src/screens/PlannerMode/Dashboard";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -394,10 +395,7 @@ function PlannerView() {
         tabBarButton: (props) => <TouchableOpacity {...props} />,
       })}
     >
-      <Tab.Screen
-        name="Explore"
-        component={mode == false ? Dashboard : PlannerView}
-      />
+      <Tab.Screen name="Explore" component={PlannerDashboard} />
       <Tab.Screen
         options={{ tabBarStyle: { display: "none" } }}
         name="AddEvent"

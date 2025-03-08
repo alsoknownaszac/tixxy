@@ -24,7 +24,7 @@ import EventOtherCard from "../../reuseable/EventOtherCard";
 
 // const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
-export default function Dashboard({ navigation }) {
+export default function PlannerDashboard({ navigation }) {
   const { width, height } = useWindowDimensions();
   const imageWidth = width - 40;
   const insets = useSafeAreaInsets();
