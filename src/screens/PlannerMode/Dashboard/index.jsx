@@ -13,14 +13,14 @@ import {
 } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import { Feather, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import FontText from "../../reuseable/FontText";
-import LayoutContainer from "../../Layout/LayoutContainer";
+import FontText from "../../../reuseable/FontText";
+import LayoutContainer from "../../../Layout/LayoutContainer";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 // import CalendarIconII from "../../../assets/icons/calendar_icon_2.svg";
 // import Location from "../../../assets/icons/location.svg";
 // import Clock from "../../../assets/icons/clock.svg";
-import EventMainCard from "../../reuseable/EventMainCard";
-import EventOtherCard from "../../reuseable/EventOtherCard";
+import EventMainCard from "../../../reuseable/EventMainCard";
+import EventOtherCard from "../../../reuseable/EventOtherCard";
 
 // const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
