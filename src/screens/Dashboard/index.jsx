@@ -22,13 +22,44 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import EventMainCard from "../../reuseable/EventMainCard";
 import EventOtherCard from "../../reuseable/EventOtherCard";
 
+import { useGlobalReducer, useGlobalState } from "../../lib/appContext";
+import TicketDetailsModal from "../components/EventDetails/TicketDetailsModal";
+
 // const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
 export default function Dashboard({ navigation }) {
+  const { event } = useGlobalState();
+  const dispatch = useGlobalReducer();
+
+  const [paidEvent, setPaidEvent] = useState(true);
+
   const { width, height } = useWindowDimensions();
   const imageWidth = width - 40;
   const insets = useSafeAreaInsets();
+
   const [loaded, setLoaded] = useState(false);
+
+  const ticketDetailsData = {
+    width: imageWidth,
+    setLoaded,
+    image_uri:
+      "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg",
+    date: "2024-06-10T00:00:00.000Z",
+    event_type: "Concert",
+    ticket_type: "VIP",
+    order_id: "0012347",
+    venue: "Eko Hotel, Lagos",
+    time: "2024-06-10T00:00:00.000Z",
+    ticket_price: "₦5000",
+    ticket_quantity: "3",
+    ticket_total: "₦5000",
+    ticket_status: "Active",
+    ticket_id: "0012347",
+    ticket_qr_code:
+      "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0012347",
+  };
+
+  const [modalVisible, setModalVisible] = useState(false);
 
   if (loaded) {
     SplashScreen.preventAutoHideAsync();
@@ -114,10 +145,12 @@ export default function Dashboard({ navigation }) {
           renderItem={({ item, index }) => (
             <Pressable
               onPress={() =>
-                navigation.navigate("EventDetails", {
-                  id: 1,
-                  data: "anything you want here",
-                })
+                paidEvent === false
+                  ? navigation.navigate("EventDetails", {
+                      id: 12,
+                      data: "anything you want here",
+                    })
+                  : setModalVisible(true)
               }
             >
               <EventMainCard
@@ -154,10 +187,12 @@ export default function Dashboard({ navigation }) {
           renderItem={({ item, index }) => (
             <Pressable
               onPress={() =>
-                navigation.navigate("EventDetails", {
-                  id: 12,
-                  data: "anything you want here",
-                })
+                paidEvent === false
+                  ? navigation.navigate("EventDetails", {
+                      id: 12,
+                      data: "anything you want here",
+                    })
+                  : setModalVisible(true)
               }
             >
               <EventOtherCard item={item} setLoaded={setLoaded} />
@@ -165,6 +200,11 @@ export default function Dashboard({ navigation }) {
           )}
         />
       </View>
+      <TicketDetailsModal
+        detailsData={ticketDetailsData}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </LayoutContainer>
   );
 }
