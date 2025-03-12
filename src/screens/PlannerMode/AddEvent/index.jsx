@@ -602,7 +602,7 @@ export default function AddEvent({ navigation }) {
           onPress={() =>
             sectionPage != 2
               ? setSectionPage(sectionPage + 1)
-              : console.log("finished")
+              : setModalVisible(true)
           }
           className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
         >

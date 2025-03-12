@@ -44,11 +44,6 @@ export default function AddEventModal({
         style={styles.centeredView}
       >
         <View style={styles.modalView1}>
-          <TicketDetailsCard
-            item={item}
-            setLoaded={detailsData.setLoaded}
-            imageWidth={detailsData.imageWidth}
-          />
           <View className="bg-white py-[23] px-[27] rounded-b-[6px]">
             <View className="flex flex-row justify-between items-center">
               <View className="w-1/3">
@@ -84,90 +79,11 @@ export default function AddEventModal({
                 </View>
               </View>
             </View>
-            <View className="flex flex-row justify-between items-center mt-[20px]">
-              <View className="w-1/3">
-                <FontText className="mb-[5px] text-[14px] leading-[19.6px] font-chillaxMedium">
-                  Date
-                </FontText>
-                <View className="backdrop-blur-xl flex flex-row">
-                  <CalendarIconII
-                    width={16}
-                    height={16}
-                    strokeWidth={0.3}
-                    stroke="#000"
-                  />
-                  <FontText className="font-satoshiMedium text-[16px] leading-[20px] pl-1">
-                    May 21
-                  </FontText>
-                </View>
-              </View>
-              <View className="w-1/3">
-                <FontText className="mb-[5px] text-[14px] leading-[19.6px] font-chillaxMedium">
-                  Date
-                </FontText>
-                <View className="backdrop-blur-xl flex flex-row">
-                  <CalendarIconII
-                    width={16}
-                    height={16}
-                    strokeWidth={0.3}
-                    stroke="#000"
-                  />
-                  <FontText className="font-satoshiMedium text-[16px] leading-[20px] pl-1">
-                    May 21
-                  </FontText>
-                </View>
-              </View>
-            </View>
-            <View className="flex flex-row justify-between items-center mt-[20px]">
-              <View className="w-1/3">
-                <FontText className="mb-[5px] text-[14px] leading-[19.6px] font-chillaxMedium">
-                  Date
-                </FontText>
-                <View className="backdrop-blur-xl flex flex-row">
-                  <CalendarIconII
-                    width={16}
-                    height={16}
-                    strokeWidth={0.3}
-                    stroke="#000"
-                  />
-                  <FontText className="font-satoshiMedium text-[16px] leading-[20px] pl-1">
-                    May 21
-                  </FontText>
-                </View>
-              </View>
-              <View className="w-1/3">
-                <FontText className="mb-[5px] text-[14px] leading-[19.6px] font-chillaxMedium">
-                  Date
-                </FontText>
-                <View className="backdrop-blur-xl flex flex-row">
-                  <CalendarIconII
-                    width={16}
-                    height={16}
-                    strokeWidth={0.3}
-                    stroke="#000"
-                  />
-                  <FontText className="font-satoshiMedium text-[16px] leading-[20px] pl-1">
-                    May 21
-                  </FontText>
-                </View>
-              </View>
-            </View>
-            <View className="mt-[44px] mx-auto">
-              <Image
-                source={{
-                  uri: detailsData.ticket_qr_code,
-                }}
-                key={detailsData.ticket_qr_code}
-                style={{
-                  position: "relative",
-                  width: 190,
-                  height: 190,
-                  resizeMode: "contain",
-                }}
-                blurRadius={1.2}
-                onLoad={() => detailsData.setLoaded(true)}
-              />
-            </View>
+            <TicketDetailsCard
+              item={item}
+              setLoaded={detailsData.setLoaded}
+              imageWidth={detailsData.imageWidth}
+            />
           </View>
         </View>
       </Pressable>
@@ -181,10 +97,11 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
+    height: 256,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    padding: 20,
+    // padding: 20,
   },
   modalView1: {
     width: "100%",
