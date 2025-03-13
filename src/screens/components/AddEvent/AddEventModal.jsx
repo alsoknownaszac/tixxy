@@ -13,7 +13,7 @@ import TicketDetailsCard from "../../../reuseable/TicketDetailsCard";
 import FontText from "../../../reuseable/FontText";
 import CalendarIconII from "../../../../assets/icons/calendar_icon_2.svg";
 
-export default function TicketDetailsModal({
+export default function AddEventModal({
   detailsData,
   modalVisible,
   setModalVisible,

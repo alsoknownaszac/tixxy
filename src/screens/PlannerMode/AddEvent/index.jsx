@@ -20,6 +20,7 @@ import { DropdownMenu, MenuOption } from "../../../reuseable/DropDown";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import AddEventModal from "../../components/AddEvent/AddEventModal";
 
 export default function AddEvent({ navigation }) {
   const insets = useSafeAreaInsets();
@@ -94,6 +95,10 @@ export default function AddEvent({ navigation }) {
     setIsPaidEventEnabled((previousState) => !previousState);
     setIsPriceRangeEnabled(false);
   };
+
+  const modalDetails = {};
+
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <LayoutContainer noSafeAreaProfile>
@@ -606,6 +611,11 @@ export default function AddEvent({ navigation }) {
           </FontText>
         </TouchableOpacity>
       </View>
+      <AddEventModal
+        detailsData={modalDetails}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </LayoutContainer>
   );
 }
