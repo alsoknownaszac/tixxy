@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
   },
   modalView1: {
     width: "100%",
+    marginTop: "auto",
   },
   modalView2: {
     margin: 20,
