@@ -12,6 +12,7 @@ import {
 import TicketDetailsCard from "../../../reuseable/TicketDetailsCard";
 import FontText from "../../../reuseable/FontText";
 import CalendarIconII from "../../../../assets/icons/calendar_icon_2.svg";
+import BigCheckIcon from "../../../../assets/icons/big_green_check.svg";
 
 export default function AddEventModal({
   detailsData,
@@ -44,46 +45,23 @@ export default function AddEventModal({
         style={styles.centeredView}
       >
         <View style={styles.modalView1}>
-          <View className="bg-white py-[23] px-[27] rounded-b-[6px]">
-            <View className="flex flex-row justify-between items-center">
-              <View className="w-1/3">
-                <FontText className="mb-[5px] text-[14px] leading-[19.6px] font-chillaxMedium">
-                  Date
-                </FontText>
-                <View className="backdrop-blur-xl flex flex-row">
-                  <CalendarIconII
-                    width={16}
-                    height={16}
-                    strokeWidth={0.3}
-                    stroke="#000"
-                  />
-                  <FontText className="font-satoshiMedium text-[16px] leading-[20px] pl-1">
-                    May 21
-                  </FontText>
-                </View>
-              </View>
-              <View className="w-1/3">
-                <FontText className="mb-[5px] text-[14px] leading-[19.6px] font-chillaxMedium">
-                  Date
-                </FontText>
-                <View className="backdrop-blur-xl flex flex-row">
-                  <CalendarIconII
-                    width={16}
-                    height={16}
-                    strokeWidth={0.3}
-                    stroke="#000"
-                  />
-                  <FontText className="font-satoshiMedium text-[16px] leading-[20px] pl-1">
-                    May 21
-                  </FontText>
-                </View>
-              </View>
+          <View className="bg-white py-[23] px-[27] rounded-t-[16px]">
+            <View className="flex justify-between items-center">
+              <BigCheckIcon
+                width={48}
+                height={48}
+                strokeWidth={0.3}
+                stroke="#fff"
+              />
+              <FontText className="mt-[8px] text-[24px] leading-[32px] font-clashMedium">
+                Event Created
+              </FontText>
+              <TicketDetailsCard
+                item={item}
+                setLoaded={detailsData.setLoaded}
+                imageWidth={detailsData.imageWidth}
+              />
             </View>
-            <TicketDetailsCard
-              item={item}
-              setLoaded={detailsData.setLoaded}
-              imageWidth={detailsData.imageWidth}
-            />
           </View>
         </View>
       </Pressable>
