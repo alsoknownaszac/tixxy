@@ -56,11 +56,31 @@ export default function AddEventModal({
               <FontText className="mt-[8px] text-[24px] leading-[32px] font-clashMedium">
                 Event Created
               </FontText>
-              <TicketDetailsCard
-                item={item}
-                setLoaded={detailsData.setLoaded}
-                imageWidth={detailsData.imageWidth}
-              />
+              <View className="mt-[24px]">
+                <TicketDetailsCard
+                  item={item}
+                  setLoaded={detailsData.setLoaded}
+                  imageWidth={detailsData.width}
+                />
+              </View>
+              <View className="flex-row justify-between items-center gap-[17]">
+                <TouchableOpacity
+                  onPress={() => {}}
+                  className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
+                >
+                  <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
+                    Go to Home
+                  </FontText>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {}}
+                  className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
+                >
+                  <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
+                    Create Guest List
+                  </FontText>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </View>

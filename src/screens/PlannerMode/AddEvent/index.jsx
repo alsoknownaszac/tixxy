@@ -26,6 +26,10 @@ export default function AddEvent({ navigation }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
 
+  const imageWidth = width - 85;
+
+  const [loaded, setLoaded] = useState(false);
+
   const [sectionPage, setSectionPage] = useState(0);
   const [selectedImage, setSelectedImage] = useState(undefined);
 
@@ -96,7 +100,12 @@ export default function AddEvent({ navigation }) {
     setIsPriceRangeEnabled(false);
   };
 
-  const modalDetails = {};
+  const modalDetails = {
+    width: imageWidth,
+    setLoaded,
+    image_uri:
+      "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg",
+  };
 
   const [modalVisible, setModalVisible] = useState(false);
 
