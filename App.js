@@ -401,6 +401,7 @@ function PlannerView() {
         name="AddEvent"
         component={AddEvent}
       />
+
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );

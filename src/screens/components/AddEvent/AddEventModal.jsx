@@ -13,6 +13,7 @@ import TicketDetailsCard from "../../../reuseable/TicketDetailsCard";
 import FontText from "../../../reuseable/FontText";
 import CalendarIconII from "../../../../assets/icons/calendar_icon_2.svg";
 import BigCheckIcon from "../../../../assets/icons/big_green_check.svg";
+import { useNavigation } from "@react-navigation/native";
 
 export default function AddEventModal({
   detailsData,
@@ -22,6 +23,7 @@ export default function AddEventModal({
   const item = {
     uri: detailsData.image_uri,
   };
+  const navigation = useNavigation();
 
   return (
     <Modal
@@ -41,7 +43,7 @@ export default function AddEventModal({
       // }}
     >
       <Pressable
-        onPress={() => setModalVisible(!modalVisible)}
+        // onPress={() => setModalVisible(!modalVisible)}
         style={styles.centeredView}
       >
         <View style={styles.modalView1}>
@@ -56,28 +58,34 @@ export default function AddEventModal({
               <FontText className="mt-[8px] text-[24px] leading-[32px] font-clashMedium">
                 Event Created
               </FontText>
-              <View className="mt-[24px]">
+              <View className="my-[24px]">
                 <TicketDetailsCard
                   item={item}
                   setLoaded={detailsData.setLoaded}
                   imageWidth={detailsData.width}
                 />
               </View>
-              <View className="flex-row justify-between items-center gap-[17]">
+              <View className="my-[30px] flex-row justify-between items-center gap-[10]">
                 <TouchableOpacity
-                  onPress={() => {}}
-                  className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                    navigation.navigate("Dashboard");
+                  }}
+                  className="py-[12] bg-white border border-[#7E62F0] w-1/2 rounded-[100px]"
                 >
-                  <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
+                  <FontText className="text-[#7E62F0] text-center text-[18px] font-chillaxMedium leading-[150%]">
                     Go to Home
                   </FontText>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  onPress={() => {}}
-                  className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                    navigation.navigate("GuestList");
+                  }}
+                  className="py-[12] bg-[#7E62F0] w-1/2 rounded-[100px]"
                 >
                   <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
-                    Create Guest List
+                    Create Guest list
                   </FontText>
                 </TouchableOpacity>
               </View>

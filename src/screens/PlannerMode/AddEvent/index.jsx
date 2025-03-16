@@ -26,7 +26,7 @@ export default function AddEvent({ navigation }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
 
-  const imageWidth = width - 85;
+  const imageWidth = width - 90;
 
   const [loaded, setLoaded] = useState(false);
 
