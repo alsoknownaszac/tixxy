@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { FlatList, Pressable, TextInput, View } from "react-native";
+import {
+  FlatList,
+  Pressable,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import LayoutContainer from "../../../Layout/LayoutContainer";
 import BackArrow from "../../../../assets/icons/back_arrow.svg";
 import MoreBtn from "../../../../assets/icons/more_icon.svg";
@@ -13,7 +19,8 @@ import GuestListCard from "./components/GuestListCard";
 import { Feather, Ionicons } from "@expo/vector-icons";
 
 export default function GuestList({ navigation }) {
-  const [guestList, setGuestList] = useState([]);
+  const [dataList] = useState([]);
+  const [guestList, setGuestList] = useState(dataList.length == [] ? 0 : 1);
 
   const [guestTab] = useState([
     {
@@ -52,12 +59,16 @@ export default function GuestList({ navigation }) {
 
   return (
     <LayoutContainer>
-      {guestList.length == 0 ? (
+      {guestList == 0 ? (
         <View className="flex-1">
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
               <View className="w-1/6">
-                <Pressable onPress={() => navigation.goBack()}>
+                <Pressable
+                  onPress={() =>
+                    guestList == 0 ? setGuestList(0) : navigation.goBack()
+                  }
+                >
                   <BackArrow
                     width={26}
                     height={26}
@@ -114,13 +125,17 @@ export default function GuestList({ navigation }) {
               </FontText>
             </View>
           </View>
-          <AddEventIcon
+          <TouchableOpacity
             style={{ bottom: 0, right: 0, position: "absolute" }}
-            width={95}
-            height={95}
-            strokeWidth={0.3}
-            fill="none"
-          />
+            onPress={() => setGuestList(1)}
+          >
+            <AddEventIcon
+              width={95}
+              height={95}
+              strokeWidth={0.3}
+              fill="none"
+            />
+          </TouchableOpacity>
         </View>
       ) : (
         <View>
