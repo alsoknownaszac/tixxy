@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, Pressable, View } from "react-native";
+import { FlatList, Pressable, TextInput, View } from "react-native";
 import LayoutContainer from "../../../Layout/LayoutContainer";
 import BackArrow from "../../../../assets/icons/back_arrow.svg";
 import MoreBtn from "../../../../assets/icons/more_icon.svg";
@@ -9,6 +9,7 @@ import KeyboardIcon from "../../../../assets/icons/keyboard_icon.svg";
 import ImportIcon from "../../../../assets/icons/import_icon.svg";
 import FontText from "../../../reuseable/FontText";
 import GuestListCard from "./components/GuestListCard";
+import { Feather, Ionicons } from "@expo/vector-icons";
 
 export default function GuestList({ navigation }) {
   const [guestList, setGuestList] = useState([]);
@@ -50,7 +51,7 @@ export default function GuestList({ navigation }) {
 
   return (
     <LayoutContainer>
-      {guestList.length !== 0 ? (
+      {guestList.length == 0 ? (
         <View>
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
@@ -80,16 +81,31 @@ export default function GuestList({ navigation }) {
                 </Pressable>
               </View>
             </View>
+            <View className="flex-row rounded-[25px] py-[8] px-[15] bg-[#F7F7F7] mb-[10]">
+              <Feather name="search" size={22} color="grey" />
+              <TextInput
+                className="text-[20px] mx-2 font-regular font-satoshiRegular"
+                editable
+                numberOfLines={4}
+                maxLength={40}
+                onChangeText={(text) => onChangeText(text)}
+                placeholder="0 Guest"
+                // value={value}
+              />
+            </View>
           </View>
 
           <View className="flex-1">
-            <View>
+            <View className="my-auto">
               <NoGuestSvg
                 width={285}
                 height={177}
                 // strokeWidth={1}
                 // stroke="#9A9898"
               />
+              <FontText className="font-chillaxMedium text-center text-[16px] leading-[24px] text-[#2A2B2A]">
+                Guest List
+              </FontText>
             </View>
           </View>
         </View>

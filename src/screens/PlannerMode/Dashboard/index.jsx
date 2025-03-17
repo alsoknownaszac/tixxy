@@ -90,6 +90,7 @@ export default function PlannerDashboard({ navigation }) {
   ]);
 
   const lastItemArr = images.length - 1;
+
   return (
     <LayoutContainer>
       <View className="mb-[14]">
