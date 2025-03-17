@@ -43,16 +43,16 @@ export default function GuestList({ navigation }) {
       btn_link: "RegisterGuest",
       key: 2,
     },
-    {
-      title: "Import list",
-      info: "To Import guest list, you should create the guest list in a spread sheet or pdf in a table format and then upload.",
-      icon: (
-        <ImportIcon width={24} height={24} strokeWidth={1} stroke="#2A2B2A" />
-      ),
-      btn_name: "Import List",
-      btn_link: "ImportList",
-      key: 3,
-    },
+    // {
+    //   title: "Import list",
+    //   info: "To Import guest list, you should create the guest list in a spread sheet or pdf in a table format and then upload.",
+    //   icon: (
+    //     <ImportIcon width={24} height={24} strokeWidth={1} stroke="#2A2B2A" />
+    //   ),
+    //   btn_name: "Import List",
+    //   btn_link: "ImportList",
+    //   key: 3,
+    // },
   ]);
 
   // const isFocused = useIsFocused();
@@ -64,11 +64,7 @@ export default function GuestList({ navigation }) {
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
               <View className="w-1/6">
-                <Pressable
-                  onPress={() =>
-                    guestList == 0 ? setGuestList(0) : navigation.goBack()
-                  }
-                >
+                <Pressable onPress={() => navigation.goBack()}>
                   <BackArrow
                     width={26}
                     height={26}
@@ -142,7 +138,7 @@ export default function GuestList({ navigation }) {
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
               <View className="w-1/6">
-                <Pressable onPress={() => navigation.goBack()}>
+                <Pressable onPress={() => setGuestList(0)}>
                   <BackArrow
                     width={26}
                     height={26}
