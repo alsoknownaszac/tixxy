@@ -7,6 +7,7 @@ import NoGuestSvg from "../../../../assets/icons/no_guest.svg";
 import SendIcon from "../../../../assets/icons/send_icon.svg";
 import KeyboardIcon from "../../../../assets/icons/keyboard_icon.svg";
 import ImportIcon from "../../../../assets/icons/import_icon.svg";
+import AddEventIcon from "../../../../assets/icons/add_event.svg";
 import FontText from "../../../reuseable/FontText";
 import GuestListCard from "./components/GuestListCard";
 import { Feather, Ionicons } from "@expo/vector-icons";
@@ -52,7 +53,7 @@ export default function GuestList({ navigation }) {
   return (
     <LayoutContainer>
       {guestList.length == 0 ? (
-        <View>
+        <View className="flex-1">
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
               <View className="w-1/6">
@@ -113,6 +114,13 @@ export default function GuestList({ navigation }) {
               </FontText>
             </View>
           </View>
+          <AddEventIcon
+            style={{ bottom: 0, right: 0, position: "absolute" }}
+            width={95}
+            height={95}
+            strokeWidth={0.3}
+            fill="none"
+          />
         </View>
       ) : (
         <View>

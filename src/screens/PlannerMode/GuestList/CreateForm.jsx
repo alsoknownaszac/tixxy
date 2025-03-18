@@ -6,6 +6,7 @@ import MoreBtn from "../../../../assets/icons/more_icon.svg";
 import NoGuestSvg from "../../../../assets/icons/no_guest.svg";
 import SendIcon from "../../../../assets/icons/send_icon.svg";
 import KeyboardIcon from "../../../../assets/icons/keyboard_icon.svg";
+import AddEventIcon from "../../../../assets/icons/add_event.svg";
 import ImportIcon from "../../../../assets/icons/import_icon.svg";
 import FontText from "../../../reuseable/FontText";
 import GuestListCard from "./components/GuestListCard";
