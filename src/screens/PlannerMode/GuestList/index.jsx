@@ -95,16 +95,21 @@ export default function GuestList({ navigation }) {
             </View>
           </View>
 
-          <View className="flex-1">
+          <View className="flex flex-col my-[50px]">
             <View className="my-auto">
               <NoGuestSvg
-                width={285}
+                width={300}
                 height={177}
                 // strokeWidth={1}
                 // stroke="#9A9898"
               />
-              <FontText className="font-chillaxMedium text-center text-[16px] leading-[24px] text-[#2A2B2A]">
-                Guest List
+            </View>
+            <View className="mt-[24px]">
+              <FontText className="font-chillMedium text-center text-[23px] leading-[28px] text-[#595959]">
+                You have no guests,
+              </FontText>
+              <FontText className="font-chillMedium text-center text-[23px] leading-[28px] text-[#595959]">
+                Click + to add guests
               </FontText>
             </View>
           </View>
