@@ -36,7 +36,7 @@ export default function GuestListCard({ navigation, item, index }) {
               onPress={() => {
                 navigation.navigate(item.btn_link);
               }}
-              className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
+              className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[16]"
             >
               <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
                 {item.btn_name}

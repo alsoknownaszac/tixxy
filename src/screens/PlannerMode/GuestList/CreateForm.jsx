@@ -18,42 +18,8 @@ import FontText from "../../../reuseable/FontText";
 import GuestListCard from "./components/GuestListCard";
 import { Feather, Ionicons } from "@expo/vector-icons";
 
-export default function GuestList({ navigation }) {
-  const [dataList] = useState([]);
-  const [guestList, setGuestList] = useState(dataList.length == [] ? 0 : 1);
-
-  const [guestTab] = useState([
-    {
-      title: "Share link with Guest",
-      info: "To share a link with your guest, you need to create a form questionnaire that includes the details of your quests that you need, for example their names, phone numbers etc. thereafter you share the link to the people you want present, and they fill the form to get their details saved.",
-      icon: (
-        <SendIcon width={24} height={24} strokeWidth={1} stroke="#2A2B2A" />
-      ),
-      btn_name: "Create Form",
-      btn_link: "CreateForm",
-      key: 1,
-    },
-    {
-      title: "Register Guest",
-      info: "Share link with guest Register guest To register guests, you need to manually enter the details of guests, for example their names or phone numbers. thereafter you send their invitations to them.",
-      icon: (
-        <KeyboardIcon width={24} height={24} strokeWidth={1} stroke="#2A2B2A" />
-      ),
-      btn_name: "Register Guest",
-      btn_link: "RegisterGuest",
-      key: 2,
-    },
-    // {
-    //   title: "Import list",
-    //   info: "To Import guest list, you should create the guest list in a spread sheet or pdf in a table format and then upload.",
-    //   icon: (
-    //     <ImportIcon width={24} height={24} strokeWidth={1} stroke="#2A2B2A" />
-    //   ),
-    //   btn_name: "Import List",
-    //   btn_link: "ImportList",
-    //   key: 3,
-    // },
-  ]);
+export default function CreateForm({ navigation }) {
+  const [guestList, setGuestList] = useState(0);
 
   // const isFocused = useIsFocused();
 
@@ -83,17 +49,26 @@ export default function GuestList({ navigation }) {
           </View>
 
           <View className="flex">
-            <View className="w-[311px] mx-auto">
-              <FlatList
-                vertical
-                scrollEnabled={false}
-                showsHorizontalScrollIndicator={false}
-                keyExtractor={(item) => item.id}
-                data={guestTab}
-                renderItem={({ item, index }) => (
-                  <GuestListCard {...{ item, index }} />
-                )}
-              />
+            <View className="mt-[30]">
+              <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
+                Description
+              </FontText>
+              <View className="rounded-[10px] py-[14] px-[14] bg-[#DAD8D8]/20 border border-[#DAD8D8]">
+                <TextInput
+                  className="text-[17px]"
+                  editable
+                  multiline={true}
+                  numberOfLines={10}
+                  maxLength={200}
+                  onChangeText={(text) => onChangeText(text)}
+                  placeholder="Give a brief description of the event"
+                  style={{
+                    height: 80,
+                    textAlignVertical: "top",
+                  }}
+                  // value={value}
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -152,10 +127,10 @@ export default function GuestList({ navigation }) {
             </View>
             <View className="mt-[24px]">
               <FontText className="font-chillMedium text-center text-[23px] leading-[28px] text-[#595959]">
-                You have no guests,
+                Guests will be added
               </FontText>
               <FontText className="font-chillMedium text-center text-[23px] leading-[28px] text-[#595959]">
-                Click + to add guests
+                once they fill the form
               </FontText>
             </View>
           </View>
