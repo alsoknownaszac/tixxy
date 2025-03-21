@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Pressable, View, TouchableOpacity } from "react-native";
 import FontText from "../../../../reuseable/FontText";
+import { useNavigation } from "@react-navigation/native";
 
-export default function GuestListCard({ navigation, item, index }) {
+export default function GuestListCard({ item, index }) {
+  const navigation = useNavigation();
+
   const [openList, setOpenList] = useState(false);
   const [activeKey] = useState(item.key - 1);
 
-  //   console.log(activeKey);
+  console.log(item);
 
   return (
     <Pressable
@@ -36,7 +39,7 @@ export default function GuestListCard({ navigation, item, index }) {
               onPress={() => {
                 navigation.navigate(item.btn_link);
               }}
-              className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[16]"
+              className="py-[12] bg-[#7E62F0] w-1/2 mx-auto rounded-[100px] mt-[16]"
             >
               <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
                 {item.btn_name}

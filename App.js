@@ -49,6 +49,7 @@ import Svg, { Circle, Path } from "react-native-svg";
 import GuestList from "./src/screens/PlannerMode/GuestList";
 import PlannerDashboard from "./src/screens/PlannerMode/Dashboard";
 import CreateForm from "./src/screens/PlannerMode/GuestList/CreateForm";
+import RegisterGuest from "./src/screens/PlannerMode/GuestList/RegisterGuest";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -158,6 +159,7 @@ function NavigationProvider() {
           component={PlannerEventDetails}
         />
         <Stack.Screen name="CreateForm" component={CreateForm} />
+        <Stack.Screen name="RegisterGuest" component={RegisterGuest} />
 
         {/* user mode: */}
 

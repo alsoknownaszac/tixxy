@@ -15,9 +15,9 @@ import KeyboardIcon from "../../../../assets/icons/keyboard_icon.svg";
 import ImportIcon from "../../../../assets/icons/import_icon.svg";
 import AddEventIcon from "../../../../assets/icons/add_event.svg";
 import FontText from "../../../reuseable/FontText";
-import { Feather } from "@expo/vector-icons";
+import { Feather, Ionicons } from "@expo/vector-icons";
 
-export default function CreateForm({ navigation }) {
+export default function RegisterGuest({ navigation }) {
   const [guestList, setGuestList] = useState(0);
 
   // const isFocused = useIsFocused();
@@ -43,21 +43,12 @@ export default function CreateForm({ navigation }) {
                   Create Guest List
                 </FontText>
               </View>
-              <View className="w-1/6">
-                <Pressable className="ml-auto" onPress={() => {}}>
-                  <MoreBtn
-                    width={26}
-                    height={26}
-                    strokeWidth={1}
-                    stroke="#9A9898"
-                  />
-                </Pressable>
-              </View>
+              <View className="w-1/6"></View>
             </View>
           </View>
 
           <View className="flex">
-            <View className="mt-[24]">
+            <View className="mt-[30]">
               <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
                 Description
               </FontText>
@@ -69,7 +60,7 @@ export default function CreateForm({ navigation }) {
                   numberOfLines={10}
                   maxLength={200}
                   onChangeText={(text) => onChangeText(text)}
-                  placeholder="Give a brief explanation of the questionnaire and it’s importance"
+                  placeholder="Give a brief description of the event"
                   style={{
                     height: 80,
                     textAlignVertical: "top",
@@ -82,28 +73,7 @@ export default function CreateForm({ navigation }) {
               <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
                 Questions
               </FontText>
-              <View className="rounded-[12px] p-[16] border border-[#DAD8D8]">
-                <View className="flex flex-row justify-between items-center">
-                  <FontText className="font-chillaxMedium text-[17px] leading-[24px] text-[#595959]">
-                    Question 1
-                  </FontText>
-                  <View className="flex flex-row gap-[14] items-center">
-                    <Feather name="download" size={18} color="#9A9898" />
-                    <Feather name="trash-2" size={18} color="#9A9898" />
-                  </View>
-                </View>
-                <View className="mt-[16px] rounded-[10px] py-[14] px-[14] bg-[#DAD8D8]/20 border border-[#DAD8D8]">
-                  <TextInput
-                    className="text-[17px]"
-                    editable
-                    numberOfLines={4}
-                    maxLength={40}
-                    onChangeText={(text) => onChangeText(text)}
-                    placeholder="e.g What's your name?"
-                    // value={value}
-                  />
-                </View>
-              </View>
+              <View className="rounded-[12px] py-[14] px-[14] bg-[#DAD8D8]/20 border border-[#DAD8D8]"></View>
             </View>
           </View>
         </View>
