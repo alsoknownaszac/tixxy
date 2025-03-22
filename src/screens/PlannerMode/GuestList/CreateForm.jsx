@@ -11,13 +11,10 @@ import LayoutContainer from "../../../Layout/LayoutContainer";
 import BackArrow from "../../../../assets/icons/back_arrow.svg";
 import MoreBtn from "../../../../assets/icons/more_icon.svg";
 import NoGuestSvg from "../../../../assets/icons/no_guest.svg";
-import SendIcon from "../../../../assets/icons/send_icon.svg";
-import KeyboardIcon from "../../../../assets/icons/keyboard_icon.svg";
-import ImportIcon from "../../../../assets/icons/import_icon.svg";
+import WhiteCheck from "../../../../assets/icons/white_check.svg";
 import AddEventIcon from "../../../../assets/icons/add_event.svg";
 import FontText from "../../../reuseable/FontText";
-import { Feather } from "@expo/vector-icons";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import { Feather, Ionicons, AntDesign } from "@expo/vector-icons";
 import { DropdownMenu, MenuOption } from "../../../reuseable/DropDown";
 
 export default function CreateForm({ navigation }) {
@@ -45,7 +42,7 @@ export default function CreateForm({ navigation }) {
   return (
     <LayoutContainer>
       {guestList == 0 ? (
-        <View>
+        <View className="flex-1">
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
               <View className="w-1/6">
@@ -76,8 +73,8 @@ export default function CreateForm({ navigation }) {
             </View>
           </View>
 
-          <View className="flex">
-            <View className="mt-[24]">
+          <View className="">
+            <View className="mt-[14]">
               <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
                 Description
               </FontText>
@@ -182,14 +179,28 @@ export default function CreateForm({ navigation }) {
                 </View>
               </View>
             </View>
+            <View className="mt-[30] mx-auto">
+              <WhiteCheck
+                width={32}
+                height={32}
+                strokeWidth={1}
+                stroke="#9A9898"
+              />
+            </View>
           </View>
+          <TouchableOpacity
+            style={{ bottom: 30, right: 10, position: "absolute" }}
+            onPress={() => setGuestList(1)}
+          >
+            <Ionicons name="arrow-forward-circle" size={55} color="#7E62F0" />
+          </TouchableOpacity>
         </View>
       ) : (
         <View className="flex-1">
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
               <View className="w-1/6">
-                <Pressable onPress={() => navigation.goBack()}>
+                <Pressable onPress={() => setGuestList(1)}>
                   <BackArrow
                     width={26}
                     height={26}
@@ -246,7 +257,7 @@ export default function CreateForm({ navigation }) {
               </FontText>
             </View>
           </View>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{ bottom: 0, right: 0, position: "absolute" }}
             onPress={() => setGuestList(1)}
           >
@@ -256,7 +267,7 @@ export default function CreateForm({ navigation }) {
               strokeWidth={0.3}
               fill="none"
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       )}
     </LayoutContainer>
