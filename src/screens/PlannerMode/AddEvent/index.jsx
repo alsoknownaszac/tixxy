@@ -709,7 +709,7 @@ function RadioButton(props) {
   );
 }
 
-function CustomDropdown({ dropdownList, name, dropdownWidth }) {
+export function CustomDropdown({ dropdownList, name, dropdownWidth }) {
   const [visible, setVisible] = useState(false);
 
   const [eventDropdownSelected] = useState([
