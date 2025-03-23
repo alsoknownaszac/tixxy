@@ -20,8 +20,6 @@ export default function Ticket({ navigation }) {
 
   const [paidEvent, setPaidEvent] = useState(true);
 
-  console.log(paidEvent);
-
   const { width, height } = useWindowDimensions();
 
   const imageWidth = width - 40;

@@ -85,8 +85,6 @@ export default function AddEvent({ navigation }) {
     label: "",
   });
 
-  console.log(sectionPage);
-
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 

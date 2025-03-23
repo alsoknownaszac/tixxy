@@ -9,8 +9,6 @@ export default function GuestListCard({ item, index }) {
   const [openList, setOpenList] = useState(false);
   const [activeKey] = useState(item.key - 1);
 
-  console.log(item);
-
   return (
     <Pressable
       onPress={() => {

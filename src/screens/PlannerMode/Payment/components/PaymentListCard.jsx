@@ -6,8 +6,6 @@ export default function PaymentListCard({ navigation, item, index }) {
   const [openList, setOpenList] = useState(false);
   const [activeKey] = useState(item.key - 1);
 
-  //   console.log(activeKey);
-
   return (
     <Pressable onPress={() => {}}>
       <View className="border-2 border-[#F3F2F2] mt-[16px] rounded-[20px]">

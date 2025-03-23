@@ -189,10 +189,10 @@ export default function CreateForm({ navigation }) {
             </View>
           </View>
           <TouchableOpacity
-            style={{ bottom: 30, right: 10, position: "absolute" }}
+            style={{ bottom: 30, right: 15, position: "absolute" }}
             onPress={() => setGuestList(1)}
           >
-            <Ionicons name="arrow-forward-circle" size={55} color="#7E62F0" />
+            <Ionicons name="arrow-forward-circle" size={60} color="#7E62F0" />
           </TouchableOpacity>
         </View>
       ) : (
@@ -200,7 +200,7 @@ export default function CreateForm({ navigation }) {
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
               <View className="w-1/6">
-                <Pressable onPress={() => setGuestList(1)}>
+                <Pressable onPress={() => setGuestList(0)}>
                   <BackArrow
                     width={26}
                     height={26}

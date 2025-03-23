@@ -16,9 +16,18 @@ import ImportIcon from "../../../../assets/icons/import_icon.svg";
 import AddEventIcon from "../../../../assets/icons/add_event.svg";
 import FontText from "../../../reuseable/FontText";
 import { Feather, Ionicons } from "@expo/vector-icons";
+import Checkbox from "expo-checkbox";
 
 export default function RegisterGuest({ navigation }) {
   const [guestList, setGuestList] = useState(0);
+
+  const listInfo = useState([
+    { id: 1, checked: false, title: "Full Name" },
+    { id: 1, checked: false, title: "Email" },
+    { id: 1, checked: false, title: "Phone Number" },
+    { id: 1, checked: false, title: "Relationship" },
+    { id: 1, checked: false, title: "Address" },
+  ]);
 
   // const isFocused = useIsFocused();
 
@@ -29,7 +38,7 @@ export default function RegisterGuest({ navigation }) {
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
               <View className="w-1/6">
-                <Pressable onPress={() => setGuestList(0)}>
+                <Pressable onPress={() => navigation.goBack()}>
                   <BackArrow
                     width={26}
                     height={26}
@@ -48,41 +57,26 @@ export default function RegisterGuest({ navigation }) {
           </View>
 
           <View className="flex">
-            <View className="mt-[30]">
-              <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
-                Description
+            <View className="mt-[20] w-2/3 mx-auto">
+              <FontText className="font-chillaxNormal text-center font- text-[17px] leading-[24px] mb-[10] text-[#595959]">
+                Select information to be filled in to create a guest
               </FontText>
-              <View className="rounded-[10px] py-[14] px-[14] bg-[#DAD8D8]/20 border border-[#DAD8D8]">
-                <TextInput
-                  className="text-[17px]"
-                  editable
-                  multiline={true}
-                  numberOfLines={10}
-                  maxLength={200}
-                  onChangeText={(text) => onChangeText(text)}
-                  placeholder="Give a brief description of the event"
-                  style={{
-                    height: 80,
-                    textAlignVertical: "top",
-                  }}
-                  // value={value}
-                />
-              </View>
-            </View>
-            <View className="mt-[30]">
-              <FontText className="font-chillaxSemibold text-[17px] leading-[24px] mb-[10] text-[#595959]">
-                Questions
-              </FontText>
-              <View className="rounded-[12px] py-[14] px-[14] bg-[#DAD8D8]/20 border border-[#DAD8D8]"></View>
             </View>
           </View>
+          <FlatList
+            vertical
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item) => item.id}
+            data={listInfo}
+            renderItem={({ item, index }) => <Checklist item={item} />}
+          />
         </View>
       ) : (
         <View className="flex-1">
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
               <View className="w-1/6">
-                <Pressable onPress={() => navigation.goBack()}>
+                <Pressable onPress={() => setGuestList(0)}>
                   <BackArrow
                     width={26}
                     height={26}
@@ -153,5 +147,22 @@ export default function RegisterGuest({ navigation }) {
         </View>
       )}
     </LayoutContainer>
+  );
+}
+
+function Checklist({ item }) {
+  const [isSelected, setSelection] = useState(false);
+
+  return (
+    <View className="flex items-center justify-center">
+      <Checkbox
+        value={isSelected}
+        onValueChange={setSelection}
+        className="self-center"
+      />
+      <FontText className="font-chillaxNormal text-center font- text-[17px] leading-[24px] mb-[10] text-[#595959]">
+        {item.name}
+      </FontText>
+    </View>
   );
 }
