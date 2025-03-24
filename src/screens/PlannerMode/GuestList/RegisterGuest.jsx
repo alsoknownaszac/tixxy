@@ -16,7 +16,7 @@ import ImportIcon from "../../../../assets/icons/import_icon.svg";
 import AddEventIcon from "../../../../assets/icons/add_event.svg";
 import FontText from "../../../reuseable/FontText";
 import { Feather, Ionicons } from "@expo/vector-icons";
-import Checkbox from "expo-checkbox";
+import CheckBox from "react-native-check-box";
 
 export default function RegisterGuest({ navigation }) {
   const [guestList, setGuestList] = useState(0);
@@ -63,13 +63,14 @@ export default function RegisterGuest({ navigation }) {
               </FontText>
             </View>
           </View>
-          <FlatList
+          <Checklist item={listInfo[0]} />
+          {/* <FlatList
             vertical
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
             data={listInfo}
             renderItem={({ item, index }) => <Checklist item={item} />}
-          />
+          /> */}
         </View>
       ) : (
         <View className="flex-1">
@@ -151,18 +152,20 @@ export default function RegisterGuest({ navigation }) {
 }
 
 function Checklist({ item }) {
-  const [isSelected, setSelection] = useState(false);
+  const [isChecked, setSelection] = useState(false);
+
+  //   console.log(item);
 
   return (
-    <View className="flex items-center justify-center">
-      <Checkbox
-        value={isSelected}
-        onValueChange={setSelection}
-        className="self-center"
+    <View className="flex flex-row items-center justify-center">
+      <CheckBox
+        style={{ flex: 1, padding: 10 }}
+        // onClick={() => {
+        //   setSelection(!isChecked);
+        // }}
+        isChecked={isChecked}
+        rightText={item.title}
       />
-      <FontText className="font-chillaxNormal text-center font- text-[17px] leading-[24px] mb-[10] text-[#595959]">
-        {item.name}
-      </FontText>
     </View>
   );
 }
