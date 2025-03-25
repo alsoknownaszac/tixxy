@@ -4,6 +4,7 @@ import {
   Pressable,
   TextInput,
   TouchableOpacity,
+  useWindowDimensions,
   View,
 } from "react-native";
 import LayoutContainer from "../../../Layout/LayoutContainer";
@@ -18,6 +19,7 @@ import FontText from "../../../reuseable/FontText";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import CheckBox from "react-native-check-box";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import GuestListModal from "../../components/GuestList/GuestListModal";
 
 export default function RegisterGuest({ navigation }) {
   const [guestList, setGuestList] = useState(0);
@@ -30,6 +32,17 @@ export default function RegisterGuest({ navigation }) {
     { id: 1, checked: false, title: "Address" },
   ]);
 
+  const { width, height } = useWindowDimensions();
+  const imageWidth = width - 40;
+
+  const [loaded, setLoaded] = useState(false);
+
+  const modalDetails = {
+    width: imageWidth,
+    setLoaded,
+  };
+
+  const [modalVisible, setModalVisible] = useState(false);
   // const isFocused = useIsFocused();
 
   return (
@@ -162,7 +175,7 @@ export default function RegisterGuest({ navigation }) {
           </View>
           <TouchableOpacity
             style={{ bottom: 0, right: 0, position: "absolute" }}
-            onPress={() => setGuestList(1)}
+            onPress={() => setModalVisible(true)}
           >
             <AddEventIcon
               width={95}
@@ -171,6 +184,11 @@ export default function RegisterGuest({ navigation }) {
               fill="none"
             />
           </TouchableOpacity>
+          <GuestListModal
+            detailsData={modalDetails}
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
         </View>
       )}
     </LayoutContainer>
