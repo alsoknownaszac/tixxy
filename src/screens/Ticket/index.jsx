@@ -119,7 +119,7 @@ export default function Ticket({ navigation }) {
           height: height / 2.34,
         }}
       >
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() =>
             dispatch({
               type: "eventPaidBool",
@@ -129,7 +129,7 @@ export default function Ticket({ navigation }) {
           <FontText className="mb-[15] font-satoshiBold text-[25px] leading-[28px]">
             CLICK
           </FontText>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <FontText className="mb-[15] font-satoshiBold text-[25px] leading-[28px]">
           Upcoming
         </FontText>

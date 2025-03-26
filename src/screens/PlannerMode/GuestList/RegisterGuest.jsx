@@ -21,7 +21,7 @@ import CheckBox from "react-native-check-box";
 export default function RegisterGuest({ navigation }) {
   const [guestList, setGuestList] = useState(0);
 
-  const listInfo = useState([
+  const [listInfo] = useState([
     { id: 1, checked: false, title: "Full Name" },
     { id: 1, checked: false, title: "Email" },
     { id: 1, checked: false, title: "Phone Number" },
@@ -63,14 +63,13 @@ export default function RegisterGuest({ navigation }) {
               </FontText>
             </View>
           </View>
-          <Checklist item={listInfo[0]} />
-          {/* <FlatList
+          <FlatList
             vertical
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
             data={listInfo}
             renderItem={({ item, index }) => <Checklist item={item} />}
-          /> */}
+          />
         </View>
       ) : (
         <View className="flex-1">
@@ -154,15 +153,13 @@ export default function RegisterGuest({ navigation }) {
 function Checklist({ item }) {
   const [isChecked, setSelection] = useState(false);
 
-  //   console.log(item);
-
   return (
     <View className="flex flex-row items-center justify-center">
       <CheckBox
         style={{ flex: 1, padding: 10 }}
-        // onClick={() => {
-        //   setSelection(!isChecked);
-        // }}
+        onClick={() => {
+          setSelection(!isChecked);
+        }}
         isChecked={isChecked}
         rightText={item.title}
       />
