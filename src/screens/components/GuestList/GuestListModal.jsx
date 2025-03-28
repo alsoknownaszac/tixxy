@@ -8,6 +8,7 @@ import {
   Pressable,
   TouchableOpacity,
   View,
+  TextInput,
 } from "react-native";
 import TicketDetailsCard from "../../../reuseable/TicketDetailsCard";
 import FontText from "../../../reuseable/FontText";
@@ -47,47 +48,63 @@ export default function GuestListModal({
         style={styles.centeredView}
       >
         <View style={styles.modalView1}>
-          <View className="bg-white py-[23] px-[27] rounded-t-[16px]">
-            <View className="flex justify-between items-center">
-              <BigCheckIcon
-                width={48}
-                height={48}
-                strokeWidth={0.3}
-                stroke="#fff"
-              />
-              <FontText className="mt-[8px] text-[24px] leading-[32px] font-clashMedium">
-                Event Created
-              </FontText>
-              <View className="my-[24px]">
-                <TicketDetailsCard
-                  item={item}
-                  setLoaded={detailsData.setLoaded}
-                  imageWidth={detailsData.width}
-                />
+          <View className="bg-white p-[16] rounded-t-[16px]">
+            <View>
+              <View className="">
+                <FontText className="font-chillaxMedium text-[17px] leading-[24px] mb-[10] text-[#595959]">
+                  Full Name
+                </FontText>
+                <View className="rounded-[10px] py-[14] px-[14] bg-[#DAD8D8]/20 border border-[#DAD8D8]">
+                  <TextInput
+                    className="text-[17px]"
+                    editable
+                    numberOfLines={4}
+                    maxLength={40}
+                    onChangeText={(text) => onChangeText(text)}
+                    placeholder="Enter Event Name"
+                    // value={value}
+                  />
+                </View>
               </View>
-              <View className="my-[30px] flex-row justify-between items-center gap-[10]">
-                <TouchableOpacity
-                  onPress={() => {
-                    setModalVisible(!modalVisible);
-                  }}
-                  className="py-[12] bg-[#7E62F0] w-1/2 rounded-[10px]"
-                >
-                  <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
-                    Save
-                  </FontText>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => {
-                    setModalVisible(!modalVisible);
-                    // navigation.navigate("Dashboard");
-                  }}
-                  className="py-[12] bg-white border border-[#7E62F0] w-1/2 rounded-[10px]"
-                >
-                  <FontText className="text-[#7E62F0] text-center text-[18px] font-chillaxMedium leading-[150%]">
-                    Finish
-                  </FontText>
-                </TouchableOpacity>
+              <View className="mt-[16]">
+                <FontText className="font-chillaxMedium text-[17px] leading-[24px] mb-[10] text-[#595959]">
+                  Email
+                </FontText>
+                <View className="rounded-[10px] py-[14] px-[14] bg-[#DAD8D8]/20 border border-[#DAD8D8]">
+                  <TextInput
+                    className="text-[17px]"
+                    editable
+                    numberOfLines={4}
+                    maxLength={40}
+                    onChangeText={(text) => onChangeText(text)}
+                    placeholder="Enter Event Name"
+                    // value={value}
+                  />
+                </View>
               </View>
+            </View>
+            <View className="my-[30px] flex-row justify-between items-center">
+              <TouchableOpacity
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                }}
+                className="py-[12] bg-[#7E62F0] w-[48%] rounded-[10px]"
+              >
+                <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
+                  Save
+                </FontText>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                  // navigation.navigate("Dashboard");
+                }}
+                className="py-[11] bg-white border border-[#7E62F0] w-[48%] rounded-[10px]"
+              >
+                <FontText className="text-[#7E62F0] text-center text-[18px] font-chillaxMedium leading-[150%]">
+                  Finish
+                </FontText>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
