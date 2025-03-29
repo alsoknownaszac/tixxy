@@ -17,6 +17,7 @@ import AddEventIcon from "../../../../assets/icons/add_event.svg";
 import FontText from "../../../reuseable/FontText";
 import GuestListCard from "./components/GuestListCard";
 import { Feather, Ionicons } from "@expo/vector-icons";
+import GuestListSection from "./components/GuestListSection";
 
 export default function GuestList({ navigation }) {
   const [dataList] = useState([]);
@@ -103,7 +104,7 @@ export default function GuestList({ navigation }) {
             </View>
           </View>
 
-          <View className="flex flex-col my-[50px]">
+          {/* <View className="flex flex-col my-[50px]">
             <View className="my-auto">
               <NoGuestSvg
                 width={300}
@@ -120,7 +121,8 @@ export default function GuestList({ navigation }) {
                 Click + to add guests
               </FontText>
             </View>
-          </View>
+          </View> */}
+          <GuestListSection />
           <TouchableOpacity
             style={{ bottom: 0, right: 0, position: "absolute" }}
             onPress={() => setGuestList(1)}
