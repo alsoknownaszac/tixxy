@@ -17,6 +17,7 @@ import AddEventIcon from "../../../../assets/icons/add_event.svg";
 import FontText from "../../../reuseable/FontText";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import CheckBox from "react-native-check-box";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 export default function RegisterGuest({ navigation }) {
   const [guestList, setGuestList] = useState(0);
@@ -34,7 +35,7 @@ export default function RegisterGuest({ navigation }) {
   return (
     <LayoutContainer>
       {guestList == 0 ? (
-        <View>
+        <View className="flex-1">
           <View className="mb-[22] flex-initial rounded-b-[20px]">
             <View className="py-[20px] flex flex-row justify-between items-center ">
               <View className="w-1/6">
@@ -70,6 +71,29 @@ export default function RegisterGuest({ navigation }) {
             data={listInfo}
             renderItem={({ item, index }) => <Checklist item={item} />}
           />
+          <View className="flex">
+            <TouchableOpacity onPress={() => setGuestList(1)}>
+              <View className="w-2/4 bg-[#F7F7F7] gap-x-[8px] p-[8px] rounded-[10px] flex flex-row justify-center items-center mt-[20]">
+                <AntDesign name="plus" size={20} color="black" />
+                <FontText className="font-chillaxNormal text-center text-[16px] leading-[18px] text-[#595959]">
+                  Add Input field
+                </FontText>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View
+            className="my-[16px]"
+            style={{ bottom: 0, right: 0, position: "absolute" }}
+          >
+            <TouchableOpacity onPress={() => setGuestList(1)}>
+              <AddEventIcon
+                width={95}
+                height={95}
+                strokeWidth={0.3}
+                fill="none"
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       ) : (
         <View className="flex-1">
