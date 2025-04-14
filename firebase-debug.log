@@ -1,0 +1,113 @@
+[debug] [2025-04-13T17:24:12.715Z] ----------------------------------------------------------------------
+[debug] [2025-04-13T17:24:12.718Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Ramay\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-04-13T17:24:12.718Z] CLI Version:   14.1.0
+[debug] [2025-04-13T17:24:12.718Z] Platform:      win32
+[debug] [2025-04-13T17:24:12.718Z] Node Version:  v20.13.1
+[debug] [2025-04-13T17:24:12.719Z] Time:          Sun Apr 13 2025 18:24:12 GMT+0100 (West Africa Standard Time)
+[debug] [2025-04-13T17:24:12.719Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-04-13T17:24:12.725Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-13T17:24:12.726Z] > authorizing via signed-in user (mayo16collins@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Ramay\Desktop\mobile\E_invite_RN
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-04-13T17:24:42.349Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:42.349Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:42.351Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2025-04-13T17:24:43.471Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-04-13T17:24:43.471Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project tixxy-6e3c0 (tixxy) 
+[info] 
+=== Firestore Setup
+[debug] [2025-04-13T17:24:45.155Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:45.156Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:45.156Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/tixxy-6e3c0/services/firestore.googleapis.com [none]
+[debug] [2025-04-13T17:24:45.156Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/tixxy-6e3c0/services/firestore.googleapis.com x-goog-quota-user=projects/tixxy-6e3c0
+[debug] [2025-04-13T17:24:46.336Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/tixxy-6e3c0/services/firestore.googleapis.com 200
+[debug] [2025-04-13T17:24:46.336Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/tixxy-6e3c0/services/firestore.googleapis.com [omitted]
+[debug] [2025-04-13T17:24:46.336Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:46.337Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:46.337Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/tixxy-6e3c0/databases/(default) [none]
+[debug] [2025-04-13T17:24:47.473Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/tixxy-6e3c0/databases/(default) 200
+[debug] [2025-04-13T17:24:47.473Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/tixxy-6e3c0/databases/(default) {"name":"projects/tixxy-6e3c0/databases/(default)","uid":"d1cc9642-92cc-44f0-b060-a251e83b1414","createTime":"2025-04-13T17:23:48.276208Z","updateTime":"2025-04-13T17:23:48.276208Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2025-04-13T17:23:48.276208Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"etag":"IOvCzrLD1YwDMPCPsZbD1YwD"}
+[debug] [2025-04-13T17:24:47.474Z] database_type: FIRESTORE_NATIVE
+[debug] [2025-04-13T17:24:47.474Z] database_type: FIRESTORE_NATIVE
+[debug] [2025-04-13T17:24:47.474Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-13T17:24:47.475Z] > authorizing via signed-in user (mayo16collins@gmail.com)
+[debug] [2025-04-13T17:24:47.475Z] [iam] checking project tixxy-6e3c0 for permissions ["firebase.projects.get"]
+[debug] [2025-04-13T17:24:47.475Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:47.475Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:47.476Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/tixxy-6e3c0:testIamPermissions [none]
+[debug] [2025-04-13T17:24:47.476Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/tixxy-6e3c0:testIamPermissions x-goog-quota-user=projects/tixxy-6e3c0
+[debug] [2025-04-13T17:24:47.476Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/tixxy-6e3c0:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-04-13T17:24:48.600Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/tixxy-6e3c0:testIamPermissions 200
+[debug] [2025-04-13T17:24:48.600Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/tixxy-6e3c0:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2025-04-13T17:24:52.598Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:52.598Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:52.598Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/tixxy-6e3c0/releases pageSize=10&pageToken=
+[debug] [2025-04-13T17:24:53.455Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/tixxy-6e3c0/releases 200
+[debug] [2025-04-13T17:24:53.455Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/tixxy-6e3c0/releases {"releases":[{"name":"projects/tixxy-6e3c0/releases/cloud.firestore","rulesetName":"projects/tixxy-6e3c0/rulesets/a053aa1e-b12b-443d-bd07-1bbfb4ac4047","createTime":"2025-04-13T17:23:54.726891Z","updateTime":"2025-04-13T17:23:54.726891Z"}]}
+[debug] [2025-04-13T17:24:53.455Z] Found ruleset: projects/tixxy-6e3c0/rulesets/a053aa1e-b12b-443d-bd07-1bbfb4ac4047
+[debug] [2025-04-13T17:24:53.456Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:53.456Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:53.456Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/tixxy-6e3c0/rulesets/a053aa1e-b12b-443d-bd07-1bbfb4ac4047 [none]
+[debug] [2025-04-13T17:24:54.247Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/tixxy-6e3c0/rulesets/a053aa1e-b12b-443d-bd07-1bbfb4ac4047 200
+[debug] [2025-04-13T17:24:54.247Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/tixxy-6e3c0/rulesets/a053aa1e-b12b-443d-bd07-1bbfb4ac4047 [omitted]
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2025-04-13T17:24:56.613Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:56.614Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:56.614Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:56.614Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:56.614Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/tixxy-6e3c0/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2025-04-13T17:24:56.616Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/tixxy-6e3c0/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2025-04-13T17:24:57.746Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/tixxy-6e3c0/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2025-04-13T17:24:57.746Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/tixxy-6e3c0/databases/(default)/collectionGroups/-/indexes {}
+[debug] [2025-04-13T17:24:57.984Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/tixxy-6e3c0/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2025-04-13T17:24:57.984Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/tixxy-6e3c0/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/tixxy-6e3c0/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[info] 
+=== Apphosting Setup
+[debug] [2025-04-13T17:24:57.986Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:57.986Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:57.986Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/tixxy-6e3c0/billingInfo [none]
+[debug] [2025-04-13T17:24:59.184Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/tixxy-6e3c0/billingInfo 200
+[debug] [2025-04-13T17:24:59.184Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/tixxy-6e3c0/billingInfo {"name":"projects/tixxy-6e3c0/billingInfo","projectId":"tixxy-6e3c0","billingAccountName":"","billingEnabled":false}
+[info] i  Writing default settings to apphosting.yaml... 
+[info] +  Wrote apphosting.yaml 
+[info] +  Create a new App Hosting backend with `firebase apphosting:backends:create` 
+[info] 
+=== Hosting Setup
+[debug] [2025-04-13T17:24:59.189Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:59.189Z] Checked if tokens are valid: true, expires at: 1744568430255
+[debug] [2025-04-13T17:24:59.189Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/tixxy-6e3c0 [none]
+[debug] [2025-04-13T17:24:59.831Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/tixxy-6e3c0 200
+[debug] [2025-04-13T17:24:59.831Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/tixxy-6e3c0 {"projectId":"tixxy-6e3c0","projectNumber":"772825816313","displayName":"tixxy","name":"projects/tixxy-6e3c0","resources":{"hostingSite":"tixxy-6e3c0"},"state":"ACTIVE","etag":"1_1f46671f-f127-4fbe-91f5-50b1a23d335f"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Pressable, View, TouchableOpacity } from "react-native";
 import FontText from "../../../../reuseable/FontText";
 import { useNavigation } from "@react-navigation/native";
+import ListOfGuest from "./ListOfGuest";
 
 export default function GuestListSection({ item, index }) {
   // const navigation = useNavigation();
@@ -28,46 +29,9 @@ export default function GuestListSection({ item, index }) {
           </FontText>
         </View>
       </View>
-      <View className="mt-[24px]">
-        <AlphabetFlatList
-          renderItem={this.renderItem}
-          ListHeaderComponent={this.renderHeader}
-          ListFooterComponent={this.renderFooter}
-          data={names}
-          getItemLayout={this.getItemLayout}
-          mainFlatListContainerStyle={{ flex: 1 }}
-          alphabetListProps={{
-            selectedAlphabetTextStyle: {
-              color: "#fff",
-            },
-            alphabetButtonStyle: {
-              backgroundColor: "#fff",
-            },
-            selectedAlphabetButtonStyle: {
-              backgroundColor: "orange",
-              height: 30,
-              width: 30,
-              borderRadius: 15,
-              shadowOpacity: 0.5,
-              shadowOffset: { width: 2, height: 2 },
-              elevation: 4,
-            },
-            alphabetButtonStyle: {
-              backgroundColor: "#fff",
-              height: 30,
-              width: 30,
-              borderRadius: 15,
-              shadowOpacity: 0.5,
-              shadowOffset: { width: 2, height: 2 },
-              elevation: 4,
-            },
-            alphabetListContainerStyle: {
-              flex: 0.2,
-            },
-            showsVerticalScrollIndicator: false,
-          }}
-        />
-      </View>
+      {/* <View className="mt-[24px]">
+        <ListOfGuest />
+      </View> */}
     </View>
   );
 }

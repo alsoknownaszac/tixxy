@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "772825816313",
+    "firebase_url": "https://tixxy-6e3c0-default-rtdb.firebaseio.com",
+    "project_id": "tixxy-6e3c0",
+    "storage_bucket": "tixxy-6e3c0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772825816313:android:bc0c076b9ae31cdf3ed628",
+        "android_client_info": {
+          "package_name": "com.zacari.tixxy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772825816313-124pk85qgskchb1vluftdir1en7oa38k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIYtYOm0uPwwuYRC9S6MZFAJ_neFAJO-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772825816313-124pk85qgskchb1vluftdir1en7oa38k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "772825816313-k9v6al11konh9knh2bb5v5ofiq2umg87.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.zacari.tixxy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

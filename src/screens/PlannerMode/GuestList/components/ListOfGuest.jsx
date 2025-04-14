@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
-import { StatusBar, Text, View } from "react-native";
-import AlphabetFlatList from "react-native-alphabet-flat-list";
-import ContactItem, { CONTACT_ITEM_HEIGHT, IContact } from "./ContactItem";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
+// import AlphabetFlatList from "react-native-alphabet-flat-list";
 
 const items = [...new Array(10)].map((i, index) => ({
   id: index,
@@ -39,12 +38,13 @@ const data = {
 };
 
 const HEADER_HEIGHT = 50;
+const CONTACT_ITEM_HEIGHT = 60;
 
 export default function ListOfGuest() {
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
-      <AlphabetFlatList
+      {/* <AlphabetFlatList
         data={data}
         itemHeight={CONTACT_ITEM_HEIGHT}
         headerHeight={HEADER_HEIGHT}
@@ -60,7 +60,7 @@ export default function ListOfGuest() {
             <Text>ListHeaderComponent</Text>
           </View>
         }
-      />
+      /> */}
     </Fragment>
   );
 }
