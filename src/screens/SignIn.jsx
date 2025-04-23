@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { TextInput, View, Image, TouchableOpacity } from "react-native";
-import { SvgLeft, SvgRight } from "../reuseable/SignUpSvg";
 import FontText from "../reuseable/FontText";
 import LayoutContainer from "../Layout/LayoutContainer";
+import { SvgLeft, SvgRight } from "../features/authentication";
 
 const facebookLogo = require("../../assets/logo/facebook_logo.png");
 const googleLogo = require("../../assets/logo/google_logo.png");

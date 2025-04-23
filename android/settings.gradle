@@ -21,7 +21,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
   }
 }
 
-rootProject.name = 'E_invite'
+rootProject.name = 'Tixxy'
 
 dependencyResolutionManagement {
   versionCatalogs {
