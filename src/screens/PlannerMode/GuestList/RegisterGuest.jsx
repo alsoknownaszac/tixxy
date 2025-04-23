@@ -17,7 +17,7 @@ import ImportIcon from "../../../../assets/icons/import_icon.svg";
 import AddEventIcon from "../../../../assets/icons/add_event.svg";
 import FontText from "../../../reuseable/FontText";
 import { Feather, Ionicons } from "@expo/vector-icons";
-import CheckBox from "react-native-check-box";
+// import CheckBox from "react-native-check-box";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import GuestListModal from "../../components/GuestList/GuestListModal";
 
@@ -77,13 +77,13 @@ export default function RegisterGuest({ navigation }) {
                 </FontText>
               </View>
             </View>
-            <FlatList
+            {/* <FlatList
               vertical
               showsHorizontalScrollIndicator={false}
               keyExtractor={(item) => item.id}
               data={listInfo}
               renderItem={({ item, index }) => <Checklist item={item} />}
-            />
+            /> */}
             <TouchableOpacity onPress={() => setGuestList(1)}>
               <View className="w-2/4 bg-[#F7F7F7] p-[8px] rounded-[10px] flex flex-row justify-center items-center mt-[20]">
                 <AntDesign name="plus" size={20} color="black" />
@@ -195,19 +195,19 @@ export default function RegisterGuest({ navigation }) {
   );
 }
 
-function Checklist({ item }) {
-  const [isChecked, setSelection] = useState(false);
+// function Checklist({ item }) {
+//   const [isChecked, setSelection] = useState(false);
 
-  return (
-    <View className="flex flex-row items-center justify-center">
-      <CheckBox
-        className="flex-1 py-[10]"
-        onClick={() => {
-          setSelection(!isChecked);
-        }}
-        isChecked={isChecked}
-        rightText={item.title}
-      />
-    </View>
-  );
-}
+//   return (
+//     <View className="flex flex-row items-center justify-center">
+//       <CheckBox
+//         className="flex-1 py-[10]"
+//         onClick={() => {
+//           setSelection(!isChecked);
+//         }}
+//         isChecked={isChecked}
+//         rightText={item.title}
+//       />
+//     </View>
+//   );
+// }
