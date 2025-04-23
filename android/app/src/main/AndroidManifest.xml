@@ -28,7 +28,7 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="com.zacari.tixxy"/>
-        <data android:scheme="exp+einvite"/>
+        <data android:scheme="exp+tixxy"/>
       </intent-filter>
     </activity>
   </application>

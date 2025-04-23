@@ -2,7 +2,11 @@
   "expo": {
     "name": "Tixxy",
     "slug": "Tixxy",
+    "description": "Tixxy is a ticketing app that allows users to buy and sell tickets for events.",
+    // "githubUrl": "",
     "version": "1.0.0",
+    "jsEngine": "hermes",
+    "newArchEnabled": true,
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,9 +15,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "googleServicesFile": "./GoogleService-Info.plist",
