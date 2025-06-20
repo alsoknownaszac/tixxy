@@ -3,16 +3,95 @@ import { TextInput, View, Image, TouchableOpacity } from "react-native";
 import { SvgLeft, SvgRight } from "./components/SignUpSvg";
 import FontText from "../../../reuseable/FontText";
 import LayoutContainer from "../../../Layout/LayoutContainer";
+import * as SplashScreen from "expo-splash-screen";
+import { emailpasswordAuth } from "../services/emailpasswordAuth";
 
 const facebookLogo = require("../assets/facebook_logo.png");
 const googleLogo = require("../assets/google_logo.png");
 
-export function SignUpScreen({
-  navigation,
-  tab,
-  onChangeText,
-  HandleUserRegistration,
-}) {
+export default function SignUpScreen({ navigation, tab, setTabs }) {
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const validateInputs = () => {
+    const newErrors = {};
+    if (tab === 0) {
+      if (!fullname.trim()) newErrors.fullname = "Fullname is required.";
+      if (!email.trim()) {
+        newErrors.email = "Email is required.";
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
+        newErrors.email = "Invalid email format.";
+      }
+    }
+    if (tab === 1) {
+      if (!password.trim()) newErrors.password = "Password is required.";
+      if (!confirmPassword.trim()) {
+        newErrors.confirmPassword = "Confirm Password is required.";
+      } else if (password !== confirmPassword) {
+        newErrors.confirmPassword = "Passwords do not match.";
+      }
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (field, value) => {
+    switch (field) {
+      case "fullname":
+        setFullname(value);
+        break;
+      case "email":
+        setEmail(value.toLowerCase());
+        break;
+      case "password":
+        setPassword(value);
+        break;
+      case "confirmPassword":
+        setConfirmPassword(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleRegistration = () => {
+    if (tab === 0) {
+      setTabs(1);
+    }
+    if (tab === 1 && validateInputs()) {
+      console.log("Registration data:", {
+        fullname,
+        email,
+        password,
+      });
+      [loading, isSuccess, isError, errorMessage] = emailpasswordAuth(
+        email,
+        password
+      );
+      if (loading) return; // Handle loading state if necessary
+      if (isError) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          email: errorMessage || "An error occurred during registration.",
+        }));
+        return;
+      }
+      if (isSuccess) {
+        // Handle successful registration
+        console.log("Registration successful!");
+        setFullname("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setErrors({});
+        navigation.navigate("SignIn");
+      }
+    }
+  };
+
   return (
     <LayoutContainer>
       <View className="py-[48]">
@@ -46,10 +125,15 @@ export function SignUpScreen({
               editable
               numberOfLines={4}
               maxLength={40}
-              onChangeText={(text) => onChangeText(text)}
+              onChangeText={(text) => handleInputChange("fullname", text)}
               placeholder="Fullname"
-              // value={value}
+              value={fullname}
             />
+            {errors.fullname && (
+              <FontText style={{ color: "red", fontSize: 14 }}>
+                {errors.fullname}
+              </FontText>
+            )}
           </View>
           <View className="rounded-[25px] py-[14] px-[14] bg-[#DAD8D8]/20 border-2 border-[#DAD8D8] mb-[100]">
             <TextInput
@@ -57,10 +141,16 @@ export function SignUpScreen({
               editable
               numberOfLines={4}
               maxLength={40}
-              onChangeText={(text) => onChangeText(text)}
+              onChangeText={(text) => handleInputChange("email", text)}
               placeholder="Email Address"
-              // value={value}
+              value={email}
+              autoCapitalize="none"
             />
+            {errors.email && (
+              <FontText style={{ color: "red", fontSize: 14 }}>
+                {errors.email}
+              </FontText>
+            )}
           </View>
         </View>
       )}
@@ -73,10 +163,16 @@ export function SignUpScreen({
               editable
               numberOfLines={4}
               maxLength={40}
-              onChangeText={(text) => onChangeText(text)}
+              onChangeText={(text) => handleInputChange("password", text)}
               placeholder="Password"
-              // value={value}
+              value={password}
+              secureTextEntry
             />
+            {errors.password && (
+              <FontText style={{ color: "red", fontSize: 14 }}>
+                {errors.password}
+              </FontText>
+            )}
           </View>
           <View className="rounded-[25px] py-[14] px-[14] bg-[#DAD8D8]/40 border-2 border-[#DAD8D8] mb-[100]">
             <TextInput
@@ -84,16 +180,24 @@ export function SignUpScreen({
               editable
               numberOfLines={4}
               maxLength={40}
-              onChangeText={(text) => onChangeText(text)}
+              onChangeText={(text) =>
+                handleInputChange("confirmPassword", text)
+              }
               placeholder="Confirm Password"
-              // value={value}
+              value={confirmPassword}
+              secureTextEntry
             />
+            {errors.confirmPassword && (
+              <FontText style={{ color: "red", fontSize: 14 }}>
+                {errors.confirmPassword}
+              </FontText>
+            )}
           </View>
         </View>
       )}
 
       <TouchableOpacity
-        onPress={HandleUserRegistration}
+        onPress={handleRegistration}
         className="py-[12] bg-[#7E62F0] w-full rounded-[100px] mt-[10] mb-[27] "
       >
         <FontText className="text-white text-center text-[18px] font-chillaxMedium leading-[150%]">
@@ -155,10 +259,6 @@ export function SignUpScreen({
           </TouchableOpacity>
         </View>
       )}
-      {/* <Button
-            title="Go back to Home screen"
-            onPress={() => navigation.popToTop()}
-          /> */}
     </LayoutContainer>
   );
 }
