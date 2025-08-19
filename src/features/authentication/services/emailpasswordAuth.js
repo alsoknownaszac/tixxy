@@ -1,5 +1,8 @@
 import { useState } from "react";
-import auth from "@react-native-firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+} from "@react-native-firebase/auth";
 
 export function emailpasswordAuth(email, password) {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -7,8 +10,7 @@ export function emailpasswordAuth(email, password) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  auth()
-    .createUserWithEmailAndPassword(email, password)
+  createUserWithEmailAndPassword(getAuth(), email, password)
     .then(() => {
       setIsSuccess(true);
       if (loading) setLoading(false);
